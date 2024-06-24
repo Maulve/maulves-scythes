@@ -17,6 +17,8 @@ public class ModItemGroups {
                         entries.add(ModItems.IRON_SCYTHE);
                         entries.add(ModItems.DIAMOND_SCYTHE);
                         entries.add(ModItems.NETHERITE_SCYTHE);
+                        entries.add(ModItems.AMETHYST_SCYTHE);
+                        entries.add(ModItems.REINFORCED_STICK);
                     }).build());
 
     public static void registerItemGroups() {

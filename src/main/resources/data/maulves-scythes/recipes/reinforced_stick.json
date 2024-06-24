@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "sticks",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "result": {
+    "item": "maulves-scythes:reinforced_stick"
+  }
+}

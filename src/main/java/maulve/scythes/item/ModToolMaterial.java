@@ -1,6 +1,7 @@
 package maulve.scythes.item;
 
 import net.fabricmc.yarn.constants.MiningLevels;
+import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
@@ -8,8 +9,8 @@ import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
     // TODO: change this to AMETHYST_SCYTHE and AMETHYST
-    SCYTHE(MiningLevels.HAND, 650, 1.0f, 1.0f, 26,
-            () -> Ingredient.ofItems(ModItems.DIAMOND_SCYTHE));
+    AMETHYST(MiningLevels.HAND, 2521, 9.0F, 5.0F, 26,
+            () -> Ingredient.ofItems(Items.AMETHYST_SHARD));
 
     private final int miningLevel;
     private final int itemDurability;
