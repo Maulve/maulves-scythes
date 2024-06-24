@@ -8,13 +8,13 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:iron_ingot"
     },
     "S": {
       "item": "minecraft:stick"
     }
   },
   "result": {
-    "item": "maulves-scythes:diamond_scythe"
+    "item": "maulves-scythes:iron_scythe"
   }
 }

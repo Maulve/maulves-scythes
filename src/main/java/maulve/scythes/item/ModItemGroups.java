@@ -14,7 +14,9 @@ public class ModItemGroups {
             new Identifier(MaulvesScythes.MOD_ID, "scythe"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.scythe"))
                     .icon(() -> new ItemStack(ModItems.DIAMOND_SCYTHE)).entries((displayContext, entries) -> {
+                        entries.add(ModItems.IRON_SCYTHE);
                         entries.add(ModItems.DIAMOND_SCYTHE);
+                        entries.add(ModItems.NETHERITE_SCYTHE);
                     }).build());
 
     public static void registerItemGroups() {

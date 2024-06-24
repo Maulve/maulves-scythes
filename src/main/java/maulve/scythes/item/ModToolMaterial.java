@@ -7,6 +7,7 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
+    // TODO: change this to AMETHYST_SCYTHE and AMETHYST
     SCYTHE(MiningLevels.HAND, 650, 1.0f, 1.0f, 26,
             () -> Ingredient.ofItems(ModItems.DIAMOND_SCYTHE));
 
