@@ -1,4 +1,4 @@
-# Maulve's Scythe
+# Maulve's Scythes
 
 A Vanilla+ mod that add scythes.
 
