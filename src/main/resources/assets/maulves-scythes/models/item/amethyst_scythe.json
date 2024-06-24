@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "maulves-scythes:item/diamond_scythe"
+    "layer0": "maulves-scythes:item/amethyst_scythe"
   },
   "display": {
     "ground": {
