@@ -35,6 +35,7 @@ public abstract class MixinPlayerEntity {
         return false;
     }
 
+    // modifies doSweepAttack (bl4) if player is holding a Scythe
     @ModifyVariable(method = "attack", at = @At("STORE"), name = "bl4")
     public boolean attack(boolean bl4) {
         if (holdingScythe()) {
