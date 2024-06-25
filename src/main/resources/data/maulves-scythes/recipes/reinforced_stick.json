@@ -4,11 +4,14 @@
   "group": "sticks",
   "pattern": [
     "#",
-    "#"
+    "-"
   ],
   "key": {
     "#": {
       "item": "minecraft:blackstone"
+    },
+    "-": {
+      "item": "minecraft:end_rod"
     }
   },
   "result": {

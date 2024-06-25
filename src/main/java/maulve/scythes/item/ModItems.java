@@ -11,8 +11,11 @@ public class ModItems {
     private static final int ATTACK_DAMAGE = 4;
     private static final float ATTACK_SPEED = -2.8f;
 
+    // -----  Items  -----
     public static final Item REINFORCED_STICK = registerItem("reinforced_stick", new Item(new FabricItemSettings()));
+    public static final Item TRUE_AMETHYST = registerItem("true_amethyst", new Item(new FabricItemSettings()));
 
+    // ----- Scythes -----
     public static final Item IRON_SCYTHE = registerItem("iron_scythe",
             new SwordItem(ToolMaterials.IRON, ATTACK_DAMAGE + 1, ATTACK_SPEED - 0.1f, new FabricItemSettings()));
 

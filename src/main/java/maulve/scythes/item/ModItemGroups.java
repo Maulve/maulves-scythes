@@ -19,6 +19,7 @@ public class ModItemGroups {
                         entries.add(ModItems.NETHERITE_SCYTHE);
                         entries.add(ModItems.AMETHYST_SCYTHE);
                         entries.add(ModItems.REINFORCED_STICK);
+                        entries.add(ModItems.TRUE_AMETHYST);
                     }).build());
 
     public static void registerItemGroups() {
