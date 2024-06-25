@@ -1,42 +1,45 @@
 package maulve.scythes.mixin;
 
-import maulve.scythes.MaulvesScythes;
+import maulve.scythes.item.ModItems;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Slice;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.Objects;
-
-/*
-goal: have sweep attack always happen when scythe is in hand
-in method "attack" in PlayerEntity, "bl4" boolean needs to be true
- */
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity {
+    @Unique
+    final Item[] scythes = {
+            ModItems.IRON_SCYTHE,
+            ModItems.DIAMOND_SCYTHE,
+            ModItems.NETHERITE_SCYTHE,
+            ModItems.AMETHYST_SCYTHE,
+    };
 
-    //TODO: change Inject time
-    @Inject(method = "attack", at = @At("HEAD"))
-    public void attack(Entity target, CallbackInfo ci) {
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        assert player != null;
-        String heldItem = player.getMainHandStack().getItem().getName().getString();
+    @Unique
+    private boolean holdingScythe() {
+        for (int i = 0; i < scythes.length; i++) {
+            Item scythe = scythes[i];
 
-        MaulvesScythes.LOGGER.info("Checking attack, held item: " + heldItem);
+            PlayerEntity player = MinecraftClient.getInstance().player;
+            assert player != null;
+            Item heldItem = player.getMainHandStack().getItem();
 
-        //TODO: make item check more better
-
-        if (Objects.equals(heldItem, "Amethyst Scythe")) {
-            MaulvesScythes.LOGGER.info("Hit!");
-            boolean bl4 = true;
-            //TODO: make bl4 be true
+            if (heldItem == scythe) {
+                return true;
+            }
         }
+        return false;
+    }
 
+    @ModifyVariable(method = "attack", at = @At("STORE"), name = "bl4")
+    public boolean attack(boolean bl4) {
+        if (holdingScythe()) {
+            return true;
+        }
+        return bl4;
     }
 }
