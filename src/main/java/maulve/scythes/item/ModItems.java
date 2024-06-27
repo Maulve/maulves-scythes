@@ -13,7 +13,7 @@ public class ModItems {
 
     // -----  Items  -----
     public static final Item REINFORCED_STICK = registerItem("reinforced_stick", new Item(new FabricItemSettings()));
-    public static final Item TRUE_AMETHYST = registerItem("true_amethyst", new Item(new FabricItemSettings()));
+    public static final Item SCYTHED_AMETHYST = registerItem("scythed_amethyst", new Item(new FabricItemSettings()));
 
     // ----- Scythes -----
     public static final Item IRON_SCYTHE = registerItem("iron_scythe",

@@ -6,13 +6,13 @@
       "item": "minecraft:amethyst_shard"
     },
     {
-      "item": "minecraft:quartz"
+      "item": "minecraft:calcite"
     },
     {
       "item": "minecraft:gold_ingot"
     }
   ],
   "result": {
-    "item": "maulves-scythes:true_amethyst"
+    "item": "maulves-scythes:scythed_amethyst"
   }
 }
