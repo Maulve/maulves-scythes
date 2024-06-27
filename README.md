@@ -1,5 +1,7 @@
 # Maulve's Scythes
 
+![The player holding a Diamond Scythe](image/screenshot.png)
+
 A Vanilla+ mod that add scythes.
 
 These include:
@@ -8,7 +10,7 @@ These include:
 - Netherite Scythe
 - Amethyst Scythe
 
-(add crafting recipe here)
+![Crafting recipe of a Diamond Scythe](image/crafting.png)
 
 This mod might be updated in the future with drastic changes.
 
