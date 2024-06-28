@@ -8,7 +8,6 @@ import net.minecraft.recipe.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
-    // TODO: change this to AMETHYST_SCYTHE and AMETHYST
     AMETHYST(MiningLevels.HAND, 2521, 9.0F, 5.0F, 26,
             () -> Ingredient.ofItems(Items.AMETHYST_SHARD));
 

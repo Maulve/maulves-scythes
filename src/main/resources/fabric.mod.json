@@ -17,12 +17,6 @@
 	"entrypoints": {
 		"main": [
 			"maulve.scythes.MaulvesScythes"
-		],
-		"client": [
-			"maulve.scythes.MaulvesScythesClient"
-		],
-		"fabric-datagen": [
-			"maulve.scythes.MaulvesScythesDataGenerator"
 		]
 	},
 	"mixins": [
