@@ -1,7 +1,6 @@
 package maulve.scythes.item;
 
 import net.fabricmc.yarn.constants.MiningLevels;
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
@@ -9,7 +8,7 @@ import java.util.function.Supplier;
 
 public enum ModToolMaterial implements ToolMaterial {
     AMETHYST(MiningLevels.HAND, 2521, 9.0F, 5.0F, 26,
-            () -> Ingredient.ofItems(Items.AMETHYST_SHARD));
+            () -> Ingredient.ofItems(ModItems.SCYTHED_AMETHYST));
 
     private final int miningLevel;
     private final int itemDurability;
