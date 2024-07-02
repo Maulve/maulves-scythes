@@ -1,5 +1,6 @@
 package maulve.scythes;
 
+import maulve.scythes.enchantment.ModEnchantments;
 import maulve.scythes.item.ModItemGroups;
 import maulve.scythes.item.ModItems;
 import net.fabricmc.api.ModInitializer;
@@ -15,5 +16,6 @@ public class MaulvesScythes implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
+		ModEnchantments.registerModEnchantments();
 	}
 }

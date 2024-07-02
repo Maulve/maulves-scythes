@@ -6,5 +6,7 @@
   "item.maulves-scythes.reinforced_stick": "Reinforced Stick",
   "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst",
 
-  "itemgroup.scythe": "Maulve's Scythes"
+  "itemgroup.scythe": "Maulve's Scythes",
+
+  "enchantment.maulves-scythes.scythe_enchant": "Scythe Enchant"
 }
