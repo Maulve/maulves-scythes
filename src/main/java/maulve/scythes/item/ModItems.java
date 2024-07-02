@@ -17,16 +17,16 @@ public class ModItems {
 
     // ----- Scythes -----
     public static final Item IRON_SCYTHE = registerItem("iron_scythe",
-            new SwordItem(ToolMaterials.IRON, ATTACK_DAMAGE + 1, ATTACK_SPEED - 0.1f, new FabricItemSettings()));
+            new ScytheItem(ToolMaterials.IRON, ATTACK_DAMAGE + 1, ATTACK_SPEED - 0.1f, new FabricItemSettings()));
 
     public static final Item DIAMOND_SCYTHE = registerItem("diamond_scythe",
-            new SwordItem(ToolMaterials.DIAMOND, ATTACK_DAMAGE, ATTACK_SPEED , new FabricItemSettings()));
+            new ScytheItem(ToolMaterials.DIAMOND, ATTACK_DAMAGE, ATTACK_SPEED , new FabricItemSettings()));
 
     public static final Item NETHERITE_SCYTHE = registerItem("netherite_scythe",
-            new SwordItem(ToolMaterials.NETHERITE, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
+            new ScytheItem(ToolMaterials.NETHERITE, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
 
     public static final Item AMETHYST_SCYTHE = registerItem("amethyst_scythe",
-            new SwordItem(ModToolMaterial.AMETHYST, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
+            new ScytheItem(ModToolMaterial.AMETHYST, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MaulvesScythes.MOD_ID, name), item);

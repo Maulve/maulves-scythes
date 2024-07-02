@@ -1,6 +1,6 @@
 package maulve.scythes.mixin;
 
-import maulve.scythes.item.ModItems;
+import maulve.scythes.item.ScytheItem;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -12,25 +12,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(value = PlayerEntity.class, priority = 800)
 public abstract class PlayerEntityMixin {
     @Unique
-    final Item[] scythes = {
-            ModItems.IRON_SCYTHE,
-            ModItems.DIAMOND_SCYTHE,
-            ModItems.NETHERITE_SCYTHE,
-            ModItems.AMETHYST_SCYTHE,
-    };
-
-    @Unique
     private boolean holdingScythe() {
-        for (Item scythe : scythes) {
-            PlayerEntity player = MinecraftClient.getInstance().player;
-            assert player != null;
-            Item heldItem = player.getMainHandStack().getItem();
+        PlayerEntity player = MinecraftClient.getInstance().player;
+        assert player != null;
+        Item heldItem = player.getMainHandStack().getItem();
 
-            if (heldItem == scythe) {
-                return true;
-            }
-        }
-        return false;
+        return heldItem instanceof ScytheItem;
     }
 
     // modifies doSweepAttack (bl4) if player is holding a Scythe
