@@ -16,6 +16,5 @@ public class MaulvesScythes implements ModInitializer {
 	public void onInitialize() {
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
-		ModEnchantments.registerModEnchantments();
 	}
 }

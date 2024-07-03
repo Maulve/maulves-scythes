@@ -7,6 +7,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+//INFO: currently unused until there are ideas for enchantments
+
 public class ScytheEnchantment extends Enchantment {
     public ScytheEnchantment() {
         super(Enchantment.Rarity.COMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});

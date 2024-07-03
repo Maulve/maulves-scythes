@@ -6,6 +6,8 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+//INFO: currently unused until there are ideas for enchantments
+
 public class ModEnchantments {
     // public static final Enchantment SCYTHE_ENCHANT = registerEnchantment("scythe_enchantment", new ScytheEnchantment());
 
