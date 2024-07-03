@@ -2,14 +2,19 @@ package maulve.scythes.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.CropBlock;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.item.Item;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.item.Vanishable;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 
 public class ScytheItem extends SwordItem implements Vanishable {
     private final float attackDamage;
@@ -32,4 +37,66 @@ public class ScytheItem extends SwordItem implements Vanishable {
         return slot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
     }
 
+    @Override
+    public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
+        if (state.getBlock() instanceof CropBlock) {
+            BlockPos[] gridPositions = new BlockPos[]{
+                    new BlockPos(pos.getX(), pos.getY(), pos.getZ())
+            };
+
+            PlayerEntity player = MinecraftClient.getInstance().player;
+            assert player != null;
+
+            if (player.getMovementDirection() == Direction.SOUTH) {
+                gridPositions = new BlockPos[]{
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1),
+                };
+            } else if (player.getMovementDirection() == Direction.NORTH) {
+                gridPositions = new BlockPos[]{
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1),
+                };
+            } else if (player.getMovementDirection() == Direction.EAST) {
+                gridPositions = new BlockPos[]{
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX() + 1, pos.getY(), pos.getZ()),
+                };
+            } else if (player.getMovementDirection() == Direction.WEST) {
+                gridPositions = new BlockPos[]{
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX(), pos.getY(), pos.getZ()),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() + 1),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1),
+                        new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),
+                };
+            }
+
+            for (BlockPos _pos : gridPositions) {
+                if (world.getBlockState(_pos).getBlock() instanceof CropBlock) {
+                    world.breakBlock(_pos, !player.isCreative(), miner);
+                }
+            }
+        }
+
+        if (state.getHardness(world, pos) != 0.0F) {
+            stack.damage(2, miner, (e) -> {
+                e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
+            });
+        }
+        return true;
+    }
 }
