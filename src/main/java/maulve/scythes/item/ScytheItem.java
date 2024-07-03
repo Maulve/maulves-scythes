@@ -93,9 +93,7 @@ public class ScytheItem extends SwordItem implements Vanishable {
         }
 
         if (state.getHardness(world, pos) != 0.0F) {
-            stack.damage(2, miner, (e) -> {
-                e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
-            });
+            stack.damage(2, miner, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
         return true;
     }
