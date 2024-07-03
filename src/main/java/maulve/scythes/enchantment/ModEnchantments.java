@@ -10,7 +10,7 @@ public class ModEnchantments {
 
     public static final Enchantment SCYTHE_ENCHANT = registerEnchantment("scythe_enchant", new ScytheEnchantment());
 
-    public static Enchantment registerEnchantment(String name, Enchantment enchantment) {
+    private static Enchantment registerEnchantment(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(MaulvesScythes.MOD_ID, name), enchantment);
     }
 
