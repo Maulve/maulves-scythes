@@ -1,6 +1,5 @@
 package maulve.scythes.enchantment;
 
-import maulve.scythes.MaulvesScythes;
 import maulve.scythes.item.ScytheItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -56,7 +55,6 @@ public class ScytheEnchantment extends Enchantment {
     @Override
     public boolean isAcceptableItem(@NotNull ItemStack stack) {
         boolean b = stack.getItem() instanceof ScytheItem;
-        MaulvesScythes.LOGGER.info("acceptable:" + b);
         return b;
     }
 }
