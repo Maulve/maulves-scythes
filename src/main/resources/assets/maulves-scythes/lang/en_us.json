@@ -1,10 +1,10 @@
 {
+  "itemgroup.scythe": "Maulve's Scythes",
+
   "item.maulves-scythes.iron_scythe": "Iron Scythe",
   "item.maulves-scythes.diamond_scythe": "Diamond Scythe",
   "item.maulves-scythes.netherite_scythe": "Netherite Scythe",
   "item.maulves-scythes.amethyst_scythe": "§dAmethyst Scythe",
   "item.maulves-scythes.reinforced_stick": "Reinforced Stick",
-  "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst",
-
-  "itemgroup.scythe": "Maulve's Scythes"
+  "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst"
 }
