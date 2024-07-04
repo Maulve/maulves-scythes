@@ -2,8 +2,7 @@ package maulve.scythes.item;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CropBlock;
+import net.minecraft.block.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -39,10 +38,8 @@ public class ScytheItem extends SwordItem implements Vanishable {
 
     @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        if (state.getBlock() instanceof CropBlock) {
-            BlockPos[] gridPositions = new BlockPos[]{
-                    new BlockPos(pos.getX(), pos.getY(), pos.getZ())
-            };
+        if (state.getBlock() instanceof PlantBlock) {
+            BlockPos[] gridPositions;
 
             PlayerEntity player = MinecraftClient.getInstance().player;
             assert player != null;
@@ -83,10 +80,13 @@ public class ScytheItem extends SwordItem implements Vanishable {
                         new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ() - 1),
                         new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ()),
                 };
+            } else {
+                gridPositions = new BlockPos[]{};
             }
 
             for (BlockPos _pos : gridPositions) {
-                if (world.getBlockState(_pos).getBlock() instanceof CropBlock) {
+                Block block = world.getBlockState(_pos).getBlock();
+                if (block instanceof PlantBlock) {
                     world.breakBlock(_pos, !player.isCreative(), miner);
                 }
             }
