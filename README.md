@@ -1,17 +1,22 @@
-# Maulve's Scythes
+![Title showing "Maulve's Scythes"](image/title.png)
 
-![The player holding a Diamond Scythe](image/screenshot.png)
+## Maulve's Scythes is a Vanilla+ Mod that adds Scythes as new weapons.
 
-A Vanilla+ mod that add scythes.
+Scythes slightly differ from swords, they always sweep attack.
 
-These include:
+Base Crafting recipe (also works mirrored!)
+
+![The crafting recipe of the Diamond Scythe, showing 2 sticks and 3 diamonds in a scythe shape.](image/crafting.png)
+
+### Maulve's Scythes adds the following Scythes:
 - Iron Scythe
 - Diamond Scythe
 - Netherite Scythe
 - Amethyst Scythe
 
-![Crafting recipe of a Diamond Scythe](image/crafting.png)
+### Also these Items required to craft the Amethyst Scythe:
+- Reinforced Stick (Crafting: 1 Blackstone, 1 End Rod)
+- Scythed Amethyst (Crafting: 1 Amethyst Shard, 1 Gold Ingot, 1 Calcite)
 
-This mod might be updated in the future with drastic changes.
 
-Also, this is the first mod I've ever made.
+**Currently, this mod is NOT tested in Multiplayer**
