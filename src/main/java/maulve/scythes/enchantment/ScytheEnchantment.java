@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ScytheEnchantment extends Enchantment {
     public ScytheEnchantment() {
-        super(Enchantment.Rarity.COMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
     @Override

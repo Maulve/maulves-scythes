@@ -7,7 +7,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
-
     public static final Enchantment LIFE_DRAIN = registerEnchantment("life_drain", new LifeDrainEnchantment());
 
     private static Enchantment registerEnchantment(String name, Enchantment enchantment) {
