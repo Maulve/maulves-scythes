@@ -6,5 +6,7 @@
   "item.maulves-scythes.netherite_scythe": "Netherite Scythe",
   "item.maulves-scythes.amethyst_scythe": "§dAmethyst Scythe",
   "item.maulves-scythes.reinforced_stick": "Reinforced Stick",
-  "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst"
+  "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst",
+
+  "enchantment.maulves-scythes.life_drain": "Life Drain"
 }
