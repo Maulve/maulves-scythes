@@ -56,8 +56,8 @@ public class AmethystScytheItem extends ScytheItem implements Vanishable {
         }
         World world = attacker.getWorld();
         if (!world.isClient) {
-            float n = getRandom() + 0.7f;
-            world.playSound(null, target.getBlockPos(), SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.PLAYERS, 1f, n);
+            float pitch = getRandom() + 0.7f;
+            world.playSound(null, target.getBlockPos(), SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.PLAYERS, 1f, pitch);
         }
         stack.damage(1, attacker, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         return true;
