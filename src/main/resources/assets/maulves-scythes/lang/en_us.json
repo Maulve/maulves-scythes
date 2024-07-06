@@ -8,5 +8,8 @@
   "item.maulves-scythes.reinforced_stick": "Reinforced Stick",
   "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst",
 
+  "item.maulves-scythes.amethyst_scythe.tooltip1": "§8Attributes:",
+  "item.maulves-scythes.amethyst_scythe.tooltip2": "§8- §4Bleeding",
+
   "enchantment.maulves-scythes.life_drain": "Life Drain"
 }
