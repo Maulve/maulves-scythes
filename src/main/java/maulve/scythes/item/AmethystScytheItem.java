@@ -14,6 +14,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.Vanishable;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
@@ -40,13 +42,23 @@ public class AmethystScytheItem extends ScytheItem implements Vanishable {
         return slot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
     }
 
+    private float getRandom() {
+        int max = 4;
+        int min = 2;
+        return (float) ((Math.random() * (max - min)) + min) / 10;
+    }
+
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (target.isAlive()) {
             StatusEffectInstance effect = new StatusEffectInstance(StatusEffects.WITHER, 100, 1);
             target.addStatusEffect(effect);
         }
-
+        World world = attacker.getWorld();
+        if (!world.isClient) {
+            float n = getRandom() + 0.7f;
+            world.playSound(null, target.getBlockPos(), SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.PLAYERS, 1f, n);
+        }
         stack.damage(1, attacker, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         return true;
     }
