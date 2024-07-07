@@ -17,6 +17,7 @@ import net.minecraft.item.Vanishable;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -46,6 +47,12 @@ public class AmethystScytheItem extends ScytheItem implements Vanishable {
         int max = 4;
         int min = 2;
         return (float) ((Math.random() * (max - min)) + min) / 10;
+    }
+
+    // workaround so that §d formatting doesn't appear in anvil
+    @Override
+    public Text getName(ItemStack stack) {
+        return Text.translatable(this.getTranslationKey(stack)).formatted(Formatting.LIGHT_PURPLE);
     }
 
     @Override
