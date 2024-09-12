@@ -72,7 +72,6 @@ public class AmethystScytheItem extends ScytheItem implements Vanishable {
 
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-        tooltip.add(Text.translatable("item.maulves-scythes.amethyst_scythe.tooltip1"));
-        tooltip.add(Text.translatable("item.maulves-scythes.amethyst_scythe.tooltip2"));
+        tooltip.add(Text.translatable("item.maulves-scythes.amethyst_scythe.tooltip-bleeding"));
     }
 }
