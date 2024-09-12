@@ -1,7 +1,6 @@
 package maulve.scythes.mixin;
 
 import maulve.scythes.item.ScytheItem;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
@@ -10,11 +9,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(value = PlayerEntity.class, priority = 800)
-public abstract class PlayerEntityMixin {
+public abstract class ServerPlayerEntityMixin {
     @Unique
     private boolean holdingScythe() {
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        assert player != null;
+        PlayerEntity player = (PlayerEntity)(Object) this;
         Item heldItem = player.getMainHandStack().getItem();
 
         return heldItem instanceof ScytheItem;

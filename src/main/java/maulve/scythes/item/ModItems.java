@@ -26,7 +26,7 @@ public class ModItems {
             new ScytheItem(ToolMaterials.NETHERITE, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
 
     public static final Item AMETHYST_SCYTHE = registerItem("amethyst_scythe",
-            new ScytheItem(ModToolMaterial.AMETHYST, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
+            new AmethystScytheItem(ModToolMaterial.AMETHYST, ATTACK_DAMAGE, ATTACK_SPEED, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MaulvesScythes.MOD_ID, name), item);

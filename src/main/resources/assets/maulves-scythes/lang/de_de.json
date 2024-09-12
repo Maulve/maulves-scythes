@@ -4,9 +4,11 @@
   "item.maulves-scythes.iron_scythe": "Eisensense",
   "item.maulves-scythes.diamond_scythe": "Diamantsense",
   "item.maulves-scythes.netherite_scythe": "Netheritsense",
-  "item.maulves-scythes.amethyst_scythe": "§dAmethystsense",
+  "item.maulves-scythes.amethyst_scythe": "Amethystsense",
   "item.maulves-scythes.reinforced_stick": "Verstärkter Stock",
   "item.maulves-scythes.scythed_amethyst": "Gekrümmter Amethyst",
+
+  "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Bluten",
 
   "enchantment.maulves-scythes.life_drain": "Lebensraub"
 }

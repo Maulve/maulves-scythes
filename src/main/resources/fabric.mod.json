@@ -12,7 +12,7 @@
 		"sources": "https://github.com/Maulve/maulves-scythes"
 	},
 	"license": "MIT",
-	"icon": "assets/maulves-scythes/icon.png",
+	"icon": "assets/maulves-scythes/icon-big.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

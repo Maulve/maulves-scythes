@@ -4,9 +4,11 @@
   "item.maulves-scythes.iron_scythe": "Iron Scythe",
   "item.maulves-scythes.diamond_scythe": "Diamond Scythe",
   "item.maulves-scythes.netherite_scythe": "Netherite Scythe",
-  "item.maulves-scythes.amethyst_scythe": "§dAmethyst Scythe",
+  "item.maulves-scythes.amethyst_scythe": "Amethyst Scythe",
   "item.maulves-scythes.reinforced_stick": "Reinforced Stick",
   "item.maulves-scythes.scythed_amethyst": "Scythed Amethyst",
+
+  "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Bleeding",
 
   "enchantment.maulves-scythes.life_drain": "Life Drain"
 }
