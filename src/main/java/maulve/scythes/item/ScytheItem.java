@@ -3,7 +3,6 @@ package maulve.scythes.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.*;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -41,7 +40,12 @@ public class ScytheItem extends SwordItem implements Vanishable {
         if (state.getBlock() instanceof PlantBlock) {
             BlockPos[] gridPositions;
 
-            PlayerEntity player = MinecraftClient.getInstance().player;
+            PlayerEntity player = null;
+
+            if (miner instanceof PlayerEntity) {
+                player = (PlayerEntity) miner;
+            }
+
             assert player != null;
 
             if (player.getMovementDirection() == Direction.SOUTH) {
