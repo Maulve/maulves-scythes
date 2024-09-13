@@ -13,23 +13,10 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 public class AmethystScytheItem extends ScytheItem {
-    private final float attackDamage;
-
-    public AmethystScytheItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Item.Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
-        this.attackDamage = (float)attackDamage + toolMaterial.getAttackDamage();
+    public AmethystScytheItem(ToolMaterial toolMaterial, Item.Settings settings) {
+        super(toolMaterial, settings);
     }
-
-    public float getAttackDamage() {
-        return this.attackDamage;
-    }
-
-    //public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
-    //    return slot == EquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot);
-    //}
 
     private float getRandom() {
         int max = 4;
