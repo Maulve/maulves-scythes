@@ -12,8 +12,4 @@ public class LifeDrainEnchantment extends ScytheEnchantment {
             user.heal(amount * level);
         }
     }
-
-    @Override
-    public int getMaxLevel() { return 3;}
-
 }
