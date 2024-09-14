@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static final ItemGroup SCYTHE_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(MaulvesScythes.MOD_ID, "scythe"),
+            Identifier.of(MaulvesScythes.MOD_ID, "scythe"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.scythe"))
                     .icon(() -> new ItemStack(ModItems.DIAMOND_SCYTHE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.IRON_SCYTHE);

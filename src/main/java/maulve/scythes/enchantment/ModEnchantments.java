@@ -1,19 +1,17 @@
 package maulve.scythes.enchantment;
 
-import maulve.scythes.MaulvesScythes;
-import net.minecraft.enchantment.Enchantment;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
-    public static final Enchantment LIFE_DRAIN = registerEnchantment("life_drain", new LifeDrainEnchantment());
-
-    private static Enchantment registerEnchantment(String name, Enchantment enchantment) {
-        return Registry.register(Registries.ENCHANTMENT, new Identifier(MaulvesScythes.MOD_ID, name), enchantment);
+    private static void registerEntityEffect(final Identifier identifier, final MapCodec<? extends EnchantmentEntityEffect> codec) {
+        Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, identifier, codec);
     }
 
-    public static void registerModEnchantments() {
-        MaulvesScythes.LOGGER.info("Registering mod enchantments for " + MaulvesScythes.MOD_ID);
+    public static void register() {
+        registerEntityEffect(HealEnchantmentEffect.IDENTIFIER, HealEnchantmentEffect.CODEC);
     }
 }
