@@ -1,7 +1,10 @@
 package maulve.scythes.item;
 
 import maulve.scythes.MaulvesScythes;
+import maulve.scythes.enchantment.ModEnchantments;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
+import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -20,6 +23,9 @@ public class ModItemGroups {
                         entries.add(ModItems.AMETHYST_SCYTHE);
                         entries.add(ModItems.REINFORCED_STICK);
                         entries.add(ModItems.SCYTHED_AMETHYST);
+                        entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 1)));
+                        entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 2)));
+                        entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 3)));
                     }).build());
 
     public static void registerItemGroups() {
