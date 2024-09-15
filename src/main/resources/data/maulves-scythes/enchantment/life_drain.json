@@ -18,17 +18,5 @@
   "slots": [
     "mainhand"
   ],
-  "anvil_cost": 4,
-  "effects": {
-    "minecraft:post_attack": [
-      {
-        "enchanted": "attacker",
-        "affected": "attacker",
-        "effect": {
-          "type": "maulves-scythes:heal",
-          "heal_factor": 1
-        }
-      }
-    ]
-  }
+  "anvil_cost": 4
 }

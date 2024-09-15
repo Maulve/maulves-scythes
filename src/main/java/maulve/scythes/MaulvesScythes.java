@@ -1,5 +1,6 @@
 package maulve.scythes;
 
+import maulve.scythes.enchantment.EnchantmentEventListener;
 import maulve.scythes.enchantment.ModEnchantments;
 import maulve.scythes.item.ModItemGroups;
 import maulve.scythes.item.ModItems;
@@ -15,6 +16,7 @@ public class MaulvesScythes implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModEnchantments.register();
+		EnchantmentEventListener.register();
 		ModItemGroups.registerItemGroups();
 		ModItems.registerModItems();
 	}
