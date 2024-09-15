@@ -10,5 +10,7 @@
 
   "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Bleeding",
 
-  "enchantment.maulves-scythes.life_drain": "Life Drain"
+  "enchantment.maulves-scythes.life_drain": "Life Drain",
+
+  "tag.item.maulves-scythes.scythes": "Scythes"
 }

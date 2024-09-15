@@ -10,5 +10,7 @@
 
   "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Кровотеча",
 
-  "enchantment.maulves-scythes.life_drain": "поглинання життя"
+  "enchantment.maulves-scythes.life_drain": "поглинання життя",
+
+  "tag.item.maulves-scythes.scythes": "коси"
 }
