@@ -10,6 +10,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
+
     public static final ItemGroup SCYTHE_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(MaulvesScythes.MOD_ID, "scythe"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.scythe"))

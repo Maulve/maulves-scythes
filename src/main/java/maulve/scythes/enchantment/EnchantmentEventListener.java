@@ -11,7 +11,6 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 
 public class EnchantmentEventListener {
-
     public static void register() {
         ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register(((world, entity, killedEntity) -> {
             if (entity instanceof PlayerEntity player && killedEntity instanceof LivingEntity && world instanceof ServerWorld serverWorld) {
