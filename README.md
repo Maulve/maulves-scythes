@@ -18,3 +18,9 @@ Base Crafting recipe (also works mirrored!)
 - Reinforced Stick (Crafting: 1 Blackstone, 1 End Rod)
 - Scythed Amethyst (Crafting: 1 Amethyst Shard, 1 Gold Ingot, 1 Calcite)
 - 
+
+## What's coming next?
+
+In 1.3, Maulve's Scythes will get some more features:
+- Advancements
+- A new enchantment
