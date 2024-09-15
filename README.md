@@ -17,6 +17,4 @@ Base Crafting recipe (also works mirrored!)
 ### Also these Items required to craft the Amethyst Scythe:
 - Reinforced Stick (Crafting: 1 Blackstone, 1 End Rod)
 - Scythed Amethyst (Crafting: 1 Amethyst Shard, 1 Gold Ingot, 1 Calcite)
-
-
-**Currently, this mod is NOT tested in Multiplayer**
+- 
