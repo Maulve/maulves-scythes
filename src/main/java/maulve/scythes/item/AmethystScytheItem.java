@@ -1,5 +1,6 @@
 package maulve.scythes.item;
 
+import net.minecraft.client.item.TooltipType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -12,6 +13,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class AmethystScytheItem extends ScytheItem {
     public AmethystScytheItem(ToolMaterial toolMaterial, Item.Settings settings) {
@@ -47,8 +50,8 @@ public class AmethystScytheItem extends ScytheItem {
         return true;
     }
 
-    //@Override
-    //public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
-    //    tooltip.add(Text.translatable("item.maulves-scythes.amethyst_scythe.tooltip-bleeding"));
-    //}
+    @Override
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+        tooltip.add(Text.translatable("item.maulves-scythes.amethyst_scythe.tooltip-bleeding"));
+    }
 }
