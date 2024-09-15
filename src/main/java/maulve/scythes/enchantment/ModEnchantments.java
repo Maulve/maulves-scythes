@@ -24,10 +24,6 @@ public class ModEnchantments {
         return registry.getEntry(key).orElseThrow();
     }
 
-    public static Enchantment getEnchantment(RegistryEntry<Enchantment> entry) {
-        return entry.value();
-    }
-
     public static void register() {
         registerEntityEffect(HealEnchantmentEffect.IDENTIFIER, HealEnchantmentEffect.CODEC);
     }
