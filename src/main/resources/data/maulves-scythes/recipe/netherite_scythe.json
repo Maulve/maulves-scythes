@@ -7,7 +7,7 @@
     "item": "maulves-scythes:diamond_scythe"
   },
   "result": {
-    "item": "maulves-scythes:netherite_scythe"
+    "id": "maulves-scythes:netherite_scythe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"
