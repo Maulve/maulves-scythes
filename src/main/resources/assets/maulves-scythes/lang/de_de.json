@@ -11,6 +11,9 @@
   "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Bluten",
 
   "enchantment.maulves-scythes.life_drain": "Lebensraub",
+  "enchantment.maulves-scythes.sweeping_arc": "Swungsichel",
+
+  "advancements.maulves-scythes.glimmering_reaper.title": "Glimmender Schnitter",
 
   "tag.item.maulves-scythes.scythes": "Sensen"
 }

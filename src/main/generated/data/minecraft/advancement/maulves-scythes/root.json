@@ -13,12 +13,16 @@
   },
   "display": {
     "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
-    "description": "Now we're talking",
+    "description": {
+      "translate": "advancements.maulves-scythes.glimmering_reaper.description"
+    },
     "icon": {
       "count": 1,
       "id": "maulves-scythes:amethyst_scythe"
     },
-    "title": "Glimmering reaper"
+    "title": {
+      "translate": "advancements.maulves-scythes.glimmering_reaper.title"
+    }
   },
   "requirements": [
     [
