@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "I": {
+      "item": "maulves-scythes:reinforced_stick"
+    }
+  },
+  "pattern": [
+    " ##",
+    "# I",
+    "  I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "maulves-scythes:diamond_scythe"
+  }
+}
