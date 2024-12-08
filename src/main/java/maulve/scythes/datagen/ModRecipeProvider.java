@@ -35,23 +35,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.END_ROD), conditionsFromItem(Items.END_ROD))
                 .offerTo(exporter);
 
-        offerScythe(exporter, ModItems.AMETHYST_SCYTHE, ModItems.SCYTHED_AMETHYST);
-        offerScythe(exporter, ModItems.DIAMOND_SCYTHE, Items.DIAMOND);
-        offerScythe(exporter, ModItems.IRON_SCYTHE, Items.IRON_INGOT);
+        offerScythe(exporter, ModItems.AMETHYST_SCYTHE, ModItems.SCYTHED_AMETHYST, true);
+        offerScythe(exporter, ModItems.DIAMOND_SCYTHE, Items.DIAMOND, false);
+        offerScythe(exporter, ModItems.IRON_SCYTHE, Items.IRON_INGOT, false);
 
         offerNetheriteUpgradeRecipe(exporter, ModItems.DIAMOND_SCYTHE, RecipeCategory.COMBAT, ModItems.NETHERITE_SCYTHE);
 
     }
 
-    private void offerScythe(RecipeExporter exporter, Item scythe, Item material) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, scythe)
+    private void offerScythe(RecipeExporter exporter, Item scythe, Item material, boolean useReinforcedStick) {
+        ShapedRecipeJsonBuilder builder = ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, scythe)
                 .pattern(" ##")
                 .pattern("# I")
                 .pattern("  I")
                 .input('#', material)
-                .input('I', ModItems.REINFORCED_STICK)
                 .criterion(hasItem(material), conditionsFromItem(material))
-                .criterion(hasItem(ModItems.REINFORCED_STICK), conditionsFromItem(ModItems.REINFORCED_STICK))
-                .offerTo(exporter);
+                .criterion(hasItem(ModItems.REINFORCED_STICK), conditionsFromItem(ModItems.REINFORCED_STICK));
+
+        if (useReinforcedStick) {
+            builder.input('I', ModItems.REINFORCED_STICK);
+        } else {
+            builder.input('I', Items.STICK);
+        }
+        builder.offerTo(exporter);
     }
 }
