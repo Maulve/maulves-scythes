@@ -1,11 +1,11 @@
 package maulve.scythes.enchantment;
 
 import maulve.scythes.MaulvesScythes;
+import maulve.scythes.util.ModItemTags;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 public class ModEnchantments {
@@ -17,8 +17,8 @@ public class ModEnchantments {
         var items = registerable.getRegistryLookup(RegistryKeys.ITEM);
 
         register(registerable, LIFE_DRAIN, Enchantment.builder(Enchantment.definition(
-                items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), // TODO: add ModItemTags
-                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                items.getOrThrow(ModItemTags.SCYTHES),
+                items.getOrThrow(ModItemTags.SCYTHES),
                 2,
                 3,
                 Enchantment.leveledCost(10, 10),
@@ -28,8 +28,8 @@ public class ModEnchantments {
         // TODO: add exclusiveSet (non-compatible enchants)
 
         register(registerable, SWEEPING_ARC, Enchantment.builder(Enchantment.definition(
-                items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE), // TODO: add ModItemTags
-                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                items.getOrThrow(ModItemTags.SCYTHES),
+                items.getOrThrow(ModItemTags.SCYTHES),
                 2,
                 1,
                 Enchantment.leveledCost(10, 10),
