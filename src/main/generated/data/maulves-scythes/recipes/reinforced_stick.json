@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "group": "sticks",
-  "pattern": [
-    "#",
-    "-"
-  ],
   "key": {
-    "#": {
+    "O": {
       "item": "minecraft:blackstone"
     },
-    "-": {
+    "X": {
       "item": "minecraft:end_rod"
     }
   },
+  "pattern": [
+    "O",
+    "X"
+  ],
   "result": {
     "item": "maulves-scythes:reinforced_stick"
-  }
+  },
+  "show_notification": true
 }

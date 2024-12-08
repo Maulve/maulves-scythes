@@ -1,20 +1,21 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "pattern": [
-    " ##",
-    "# S",
-    "  S"
-  ],
   "key": {
     "#": {
       "item": "maulves-scythes:scythed_amethyst"
     },
-    "S": {
+    "I": {
       "item": "maulves-scythes:reinforced_stick"
     }
   },
+  "pattern": [
+    " ##",
+    "# I",
+    "  I"
+  ],
   "result": {
     "item": "maulves-scythes:amethyst_scythe"
-  }
+  },
+  "show_notification": true
 }
