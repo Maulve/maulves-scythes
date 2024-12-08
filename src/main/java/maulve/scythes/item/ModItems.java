@@ -1,6 +1,9 @@
 package maulve.scythes.item;
 
 import maulve.scythes.MaulvesScythes;
+import maulve.scythes.item.custom.AmethystScytheItem;
+import maulve.scythes.item.custom.ModToolMaterial;
+import maulve.scythes.item.custom.ScytheItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;

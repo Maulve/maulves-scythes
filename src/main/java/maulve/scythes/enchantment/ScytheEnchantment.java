@@ -1,6 +1,6 @@
 package maulve.scythes.enchantment;
 
-import maulve.scythes.item.ScytheItem;
+import maulve.scythes.item.custom.ScytheItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;

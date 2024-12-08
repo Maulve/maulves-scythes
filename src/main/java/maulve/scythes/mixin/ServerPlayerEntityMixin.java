@@ -1,6 +1,6 @@
 package maulve.scythes.mixin;
 
-import maulve.scythes.item.ScytheItem;
+import maulve.scythes.item.custom.ScytheItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

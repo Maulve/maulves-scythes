@@ -1,4 +1,4 @@
-package maulve.scythes.item;
+package maulve.scythes.item.custom;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;

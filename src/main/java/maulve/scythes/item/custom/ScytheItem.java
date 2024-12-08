@@ -1,4 +1,4 @@
-package maulve.scythes.item;
+package maulve.scythes.item.custom;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
@@ -26,6 +26,19 @@ public class ScytheItem extends SwordItem implements Vanishable {
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier", attackSpeed, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
     }
+
+    @Override
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        return allowedToMine(state.getBlock());
+    }
+
+    @Override
+    public float getMiningSpeedMultiplier(ItemStack stack, BlockState state) {
+        if (allowedToMine(state.getBlock())) {
+            return super.getMiningSpeedMultiplier(stack, state);
+        }
+        return 0.0f;
+    }
     
     public float getAttackDamage() {
         return this.attackDamage;
@@ -37,7 +50,7 @@ public class ScytheItem extends SwordItem implements Vanishable {
 
     @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        if (state.getBlock() instanceof PlantBlock) {
+        if (allowedToSweepMine(state.getBlock())) {
             BlockPos[] gridPositions;
 
             PlayerEntity player = null;
@@ -90,7 +103,7 @@ public class ScytheItem extends SwordItem implements Vanishable {
 
             for (BlockPos _pos : gridPositions) {
                 Block block = world.getBlockState(_pos).getBlock();
-                if (block instanceof PlantBlock) {
+                if (allowedToSweepMine(block)) {
                     world.breakBlock(_pos, !player.isCreative(), miner);
                 }
             }
@@ -100,5 +113,12 @@ public class ScytheItem extends SwordItem implements Vanishable {
             stack.damage(2, miner, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
         }
         return true;
+    }
+
+    private boolean allowedToMine(Block block) {
+        return block instanceof PlantBlock || block instanceof CobwebBlock;
+    }
+    private boolean allowedToSweepMine(Block block) {
+        return block instanceof PlantBlock;
     }
 }
