@@ -59,9 +59,7 @@ public class AmethystScytheItem extends ScytheItem implements Vanishable {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (target.isAlive()) {
             StatusEffectInstance effectWither = new StatusEffectInstance(StatusEffects.WITHER, 80, 1);
-            StatusEffectInstance effectSlowness = new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 1);
             target.addStatusEffect(effectWither);
-            target.addStatusEffect(effectSlowness);
         }
         World world = attacker.getWorld();
         if (!world.isClient) {
