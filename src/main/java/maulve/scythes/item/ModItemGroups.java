@@ -26,6 +26,7 @@ public class ModItemGroups {
                         entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 1)));
                         entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 2)));
                         entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.LIFE_DRAIN, 3)));
+                        entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ModEnchantments.SWEEPING_ARC, 1)));
                     }).build());
 
     public static void registerItemGroups() {

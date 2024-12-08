@@ -1,0 +1,29 @@
+{
+  "criteria": {
+    "got_scythe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "maulves-scythes:amethyst_scythe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": "Now we're talking",
+    "icon": {
+      "count": 1,
+      "id": "maulves-scythes:amethyst_scythe"
+    },
+    "title": "Glimmering reaper"
+  },
+  "requirements": [
+    [
+      "got_scythe"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
