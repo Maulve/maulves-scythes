@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:story/root",
+  "criteria": {
+    "got_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": "maulves-scythes:amethyst_scythe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.maulves-scythes.glimmering_reaper.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "maulves-scythes:amethyst_scythe"
+    },
+    "title": {
+      "translate": "advancements.maulves-scythes.glimmering_reaper.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

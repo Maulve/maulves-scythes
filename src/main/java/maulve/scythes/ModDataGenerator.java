@@ -1,9 +1,6 @@
 package maulve.scythes;
 
-import maulve.scythes.datagen.ModItemTagProvider;
-import maulve.scythes.datagen.ModModelProvider;
-import maulve.scythes.datagen.ModRecipeProvider;
-import maulve.scythes.datagen.ModRegistryDataGenerator;
+import maulve.scythes.datagen.*;
 import maulve.scythes.enchantment.ModEnchantments;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -19,6 +16,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(ModRecipeProvider::new);
         pack.addProvider(ModRegistryDataGenerator::new);
         pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModAdvancementProvider::new);
 
     }
 
