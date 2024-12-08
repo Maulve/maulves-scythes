@@ -13,7 +13,7 @@ public class ModItemGroups {
 
     public static final ItemGroup SCYTHE_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(MaulvesScythes.MOD_ID, "scythe"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.scythe"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.maulves-scythes.scythes"))
                     .icon(() -> new ItemStack(ModItems.DIAMOND_SCYTHE)).entries((displayContext, entries) -> {
                         entries.add(ModItems.IRON_SCYTHE);
                         entries.add(ModItems.DIAMOND_SCYTHE);
