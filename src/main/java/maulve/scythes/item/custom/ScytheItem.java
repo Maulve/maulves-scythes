@@ -34,8 +34,21 @@ public class ScytheItem extends SwordItem {
     }
 
     @Override
+    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
+        return allowedToMine(state.getBlock());
+    }
+
+    @Override
+    public float getMiningSpeed(ItemStack stack, BlockState state) {
+        if (allowedToMine(state.getBlock())) {
+            return super.getMiningSpeed(stack, state);
+        }
+        return 0.0f;
+    }
+
+    @Override
     public boolean postMine(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity miner) {
-        if (state.getBlock() instanceof PlantBlock) {
+        if (allowedToSweepMine(state.getBlock())) {
             BlockPos[] gridPositions;
 
             PlayerEntity player = null;
@@ -88,7 +101,7 @@ public class ScytheItem extends SwordItem {
 
             for (BlockPos _pos : gridPositions) {
                 Block block = world.getBlockState(_pos).getBlock();
-                if (block instanceof PlantBlock) {
+                if (allowedToSweepMine(block)) {
                     world.breakBlock(_pos, !player.isCreative(), miner);
                 }
             }
@@ -98,5 +111,12 @@ public class ScytheItem extends SwordItem {
             stack.damage(2, miner, EquipmentSlot.MAINHAND);
         }
         return true;
+    }
+
+    private boolean allowedToMine(Block block) {
+        return block instanceof PlantBlock || block instanceof CobwebBlock;
+    }
+    private boolean allowedToSweepMine(Block block) {
+        return block instanceof PlantBlock;
     }
 }
