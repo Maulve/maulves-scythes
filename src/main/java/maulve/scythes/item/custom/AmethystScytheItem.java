@@ -1,4 +1,4 @@
-package maulve.scythes.item;
+package maulve.scythes.item.custom;
 
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;

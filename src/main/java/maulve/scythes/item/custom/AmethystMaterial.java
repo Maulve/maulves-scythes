@@ -1,5 +1,6 @@
-package maulve.scythes.item;
+package maulve.scythes.item.custom;
 
+import maulve.scythes.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;

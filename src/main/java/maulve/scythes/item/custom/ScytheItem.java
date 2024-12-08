@@ -1,4 +1,4 @@
-package maulve.scythes.item;
+package maulve.scythes.item.custom;
 
 import net.minecraft.block.*;
 import net.minecraft.component.type.AttributeModifierSlot;

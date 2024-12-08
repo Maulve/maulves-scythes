@@ -2,8 +2,8 @@ package maulve.scythes.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import maulve.scythes.MaulvesScythes;
-import maulve.scythes.item.AmethystScytheItem;
-import maulve.scythes.item.ScytheItem;
+import maulve.scythes.item.custom.AmethystScytheItem;
+import maulve.scythes.item.custom.ScytheItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
