@@ -22,6 +22,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.DIAMOND_SCYTHE)
                 .add(ModItems.IRON_SCYTHE);
 
+        getOrCreateTagBuilder(ModItemTags.AMETHYST_REPAIR)
+                .add(ModItems.SCYTHED_AMETHYST);
+
         getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
                 .addTag(ModItemTags.SCYTHES);
 

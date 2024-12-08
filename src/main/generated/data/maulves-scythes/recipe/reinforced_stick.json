@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "O": {
-      "item": "minecraft:blackstone"
-    },
-    "X": {
-      "item": "minecraft:end_rod"
-    }
+    "O": "minecraft:blackstone",
+    "X": "minecraft:end_rod"
   },
   "pattern": [
     "O",

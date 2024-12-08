@@ -1,5 +1,6 @@
 package maulve.scythes.enchantment;
 
+import maulve.scythes.MaulvesScythes;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +20,8 @@ public class EnchantmentEventListener {
                 DynamicRegistryManager registryManager = serverWorld.getRegistryManager();
 
                 RegistryEntry<Enchantment> lifeDrainEntry = ModEnchantments.getEntry(registryManager, ModEnchantments.LIFE_DRAIN);
+
+                MaulvesScythes.LOGGER.info(lifeDrainEntry.toString());
 
                 if (EnchantmentHelper.getLevel(lifeDrainEntry, weapon) > 0) {
                     player.heal(EnchantmentHelper.getLevel(lifeDrainEntry, weapon));

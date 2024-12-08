@@ -17,8 +17,8 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class AmethystScytheItem extends ScytheItem {
-    public AmethystScytheItem(ToolMaterial toolMaterial, Item.Settings settings) {
-        super(toolMaterial, settings);
+    public AmethystScytheItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
+        super(material, attackDamage, attackSpeed, settings);
     }
 
     private float getRandom() {
@@ -30,7 +30,7 @@ public class AmethystScytheItem extends ScytheItem {
     // workaround so that §d formatting doesn't appear in anvil
     @Override
     public Text getName(ItemStack stack) {
-        return Text.translatable(this.getTranslationKey(stack)).formatted(Formatting.LIGHT_PURPLE);
+        return Text.translatable(this.getTranslationKey()).formatted(Formatting.LIGHT_PURPLE);
     }
 
     @Override

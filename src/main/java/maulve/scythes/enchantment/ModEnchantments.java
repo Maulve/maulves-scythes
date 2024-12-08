@@ -45,8 +45,8 @@ public class ModEnchantments {
     }
 
     public static RegistryEntry<Enchantment> getEntry(DynamicRegistryManager registryManager, RegistryKey<Enchantment> key) {
-        Registry<Enchantment> registry = registryManager.get(RegistryKeys.ENCHANTMENT);
-        return registry.getEntry(key).orElseThrow();
+        Registry<Enchantment> registry = registryManager.getOrThrow(RegistryKeys.ENCHANTMENT);
+        return registry.getOrThrow(key);
     }
 
     private static void register(Registerable<Enchantment> registry, RegistryKey<Enchantment> key, Enchantment.Builder builder) {

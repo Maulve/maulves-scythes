@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:amethyst_shard"
-    },
-    {
-      "item": "minecraft:gold_ingot"
-    },
-    {
-      "item": "minecraft:calcite"
-    }
+    "minecraft:amethyst_shard",
+    "minecraft:gold_ingot",
+    "minecraft:calcite"
   ],
   "result": {
     "count": 1,

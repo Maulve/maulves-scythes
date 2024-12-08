@@ -4,7 +4,6 @@ import com.llamalad7.mixinextras.sugar.Local;
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.item.custom.AmethystScytheItem;
 import maulve.scythes.item.custom.ScytheItem;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -33,8 +32,7 @@ public abstract class BasePlayerEntityMixin {
 
     @Unique
     protected ItemStack getHeldItemStack() {
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        assert player != null;
+        PlayerEntity player = (PlayerEntity)(Object) this;
         return player.getMainHandStack();
     }
 
@@ -76,13 +74,11 @@ public abstract class BasePlayerEntityMixin {
     }
 
     // adds Bleeding to sweeping attack targets
-    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z"))
+    @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;serverDamage(Lnet/minecraft/entity/damage/DamageSource;F)V"))
     private void addBleeding(Entity target, CallbackInfo ci, @Local(ordinal = 0) @NotNull LivingEntity livingEntity) {
         if (holdingAmethystScythe()) {
             StatusEffectInstance effectWither = new StatusEffectInstance(StatusEffects.WITHER, 80, 1);
-            StatusEffectInstance effectSlowness = new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 1);
             livingEntity.addStatusEffect(effectWither);
-            livingEntity.addStatusEffect(effectSlowness);
         }
     }
 
