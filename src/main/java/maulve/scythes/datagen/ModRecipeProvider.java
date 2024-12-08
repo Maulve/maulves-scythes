@@ -3,9 +3,9 @@ package maulve.scythes.datagen;
 import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.RecipeGenerator;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.data.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -19,8 +19,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
 
     @Override
-    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registryLookup, RecipeExporter exporter) {
-        return new RecipeGenerator(registryLookup, exporter) {
+    protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter exporter) {
+        return new RecipeGenerator(wrapperLookup, exporter) {
             @Override
             public void generate() {
                 createShapeless(RecipeCategory.MISC, ModItems.SCYTHED_AMETHYST)
@@ -63,8 +63,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             }
         };
     }
-
-
 
     @Override
     public String getName() {
