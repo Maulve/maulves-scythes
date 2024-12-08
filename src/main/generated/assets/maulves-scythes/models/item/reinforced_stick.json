@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "maulves-scythes:item/reinforced_stick"
+  }
+}
