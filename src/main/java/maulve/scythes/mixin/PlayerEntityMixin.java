@@ -27,7 +27,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Mixin(value = PlayerEntity.class, priority = 800)
-public abstract class BasePlayerEntityMixin {
+public abstract class PlayerEntityMixin {
 
     // Helper Functions
 
