@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " ##",
+    "# I",
+    "  I"
+  ],
+  "result": {
+    "count": 1,
+    "id": "maulves-scythes:iron_scythe"
+  }
+}

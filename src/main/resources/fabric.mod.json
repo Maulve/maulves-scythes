@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"maulve.scythes.MaulvesScythes"
+		],
+		"fabric-datagen": [
+			"maulve.scythes.ModDataGenerator"
 		]
 	},
 	"mixins": [

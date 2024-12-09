@@ -1,5 +1,5 @@
 {
-  "itemgroup.scythe": "Maulve's Scythes",
+  "itemgroup.maulves-scythes.scythes": "Maulve's Scythes",
 
   "item.maulves-scythes.iron_scythe": "Iron Scythe",
   "item.maulves-scythes.diamond_scythe": "Diamond Scythe",
@@ -10,5 +10,11 @@
 
   "item.maulves-scythes.amethyst_scythe.tooltip-bleeding": "§4Bleeding",
 
-  "enchantment.maulves-scythes.life_drain": "Life Drain"
+  "enchantment.maulves-scythes.life_drain": "Life Drain",
+  "enchantment.maulves-scythes.sweeping_arc": "Sweeping Arc",
+
+  "advancements.maulves-scythes.glimmering_reaper.title": "Glimmering reaper",
+  "advancements.maulves-scythes.glimmering_reaper.description": "Now we're talking",
+
+  "tag.item.maulves-scythes.scythes": "Scythes"
 }
