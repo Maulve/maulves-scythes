@@ -3,11 +3,7 @@
   "package": "maulve.scythes.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BasePlayerEntityMixin",
-    "ServerPlayerEntityMixin"
-  ],
-  "client": [
-    "ClientPlayerEntityMixin"
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
