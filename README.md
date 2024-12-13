@@ -4,7 +4,7 @@ Maulve's Scythes is a Vanilla+ mod that adds scythes as new weapons. These sligh
 You can also mine crops and other plant blocks in a 3x2 area!
 
 ---
-## Content
+## ✨ Content
 
 This mod adds various items, including - of course - scythes.
 
@@ -22,12 +22,12 @@ Also: Enchantments!
 - Sweeping Arc (increases sweeping range)
 
 --- 
-## Crafting
+## ⛏️ Crafting
 
 <img src="image/crafting.png" alt="The crafting recipe of the Diamond Scythe, showing 2 sticks and 3 diamonds in a scythe shape.">
 
 ---
-## Roadmap
+## 🗺️ Roadmap
 
 Currently, planned support is until 1.22 comes out.
 Until then I want to release one more major content update:
