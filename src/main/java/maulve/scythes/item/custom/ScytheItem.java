@@ -114,7 +114,7 @@ public class ScytheItem extends SwordItem {
     }
 
     private boolean allowedToMine(Block block) {
-        return block instanceof PlantBlock || block instanceof CobwebBlock;
+        return block instanceof PlantBlock || block instanceof CobwebBlock || block instanceof LeavesBlock;
     }
     private boolean allowedToSweepMine(Block block) {
         return block instanceof PlantBlock;
