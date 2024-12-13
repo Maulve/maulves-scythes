@@ -1,26 +1,44 @@
-![Title showing "Maulve's Scythes"](image/title.png)
+<p align="center"><img src="image/title.png" alt="Maulve's Scythes"></p>
 
-## Maulve's Scythes is a Vanilla+ Mod that adds Scythes as new weapons.
+Maulve's Scythes is a Vanilla+ mod that adds scythes as new weapons. These slightly differ from swords, because they always sweep attack.
+You can also mine crops and other plant blocks in a 3x2 area!
 
-Scythes slightly differ from swords, they always sweep attack.
+---
+## ✨ Content
 
-Base Crafting recipe (also works mirrored!)
+This mod adds various items, including - of course - scythes.
 
-![The crafting recipe of the Diamond Scythe, showing 2 sticks and 3 diamonds in a scythe shape.](image/crafting.png)
-
-### Maulve's Scythes adds the following Scythes:
 - Iron Scythe
 - Diamond Scythe
 - Netherite Scythe
 - Amethyst Scythe
 
-### Also these Items required to craft the Amethyst Scythe:
-- Reinforced Stick (Crafting: 1 Blackstone, 1 End Rod)
-- Scythed Amethyst (Crafting: 1 Amethyst Shard, 1 Gold Ingot, 1 Calcite)
-- 
+These are required to craft the Amethyst Scythe:
+- Reinforced Stick
+- Scythed Amethyst
 
-## What's coming next?
+Also: Enchantments!
+- Life Drain (heals player when killing a mob)
+- Sweeping Arc (increases sweeping range)
 
-In 1.3, Maulve's Scythes will get some more features:
-- Advancements
-- A new enchantment
+--- 
+## ⛏️ Crafting
+
+<img src="image/crafting.png" alt="The crafting recipe of the Diamond Scythe, showing 2 sticks and 3 diamonds in a scythe shape.">
+
+---
+## 🗺️ Roadmap
+
+Currently, planned support is until 1.22 comes out.
+Until then I want to release one more major content update:
+
+### 1.4 (March 2025)
+- full configuration
+- scythes in loot tables (likely end cities and ancient cities)
+- further balancing
+
+---
+## 📜 License
+
+This project is licensed under the [MIT License](https://mit-license.org/).
+You may add this mod to your modpack, as long as you give credit.
