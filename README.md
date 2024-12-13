@@ -36,3 +36,9 @@ Until then I want to release one more major content update:
 - full configuration
 - scythes in loot tables (likely end cities and ancient cities)
 - further balancing
+
+---
+## 📜 License
+
+This project is licensed under the [MIT License](https://mit-license.org/).
+You may add this mod to your modpack, as long as you give credit.
