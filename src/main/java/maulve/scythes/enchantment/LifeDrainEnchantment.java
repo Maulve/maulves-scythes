@@ -39,4 +39,9 @@ public class LifeDrainEnchantment extends Enchantment implements ToggleableFeatu
             user.heal(amount * level);
         }
     }
+
+    @Override
+    public boolean canAccept(Enchantment other) {
+        return other != Enchantments.SWEEPING_EDGE && other != Enchantments.LOOTING && super.canAccept(other);
+    }
 }

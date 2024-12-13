@@ -25,5 +25,10 @@ public class SweepingArcEnchantment extends Enchantment implements ToggleableFea
         return new Properties(tagKey, Optional.of(tagKey), weight, maxLevel, minCost, maxCost, anvilCost, FeatureSet.empty(), equipmentSlots);
     }
 
+    @Override
+    public boolean canAccept(Enchantment other) {
+        return other != Enchantments.SWEEPING_EDGE && other != Enchantments.FIRE_ASPECT && super.canAccept(other);
+    }
+
     public SweepingArcEnchantment() { super(getEnchantmentProperties());}
 }
