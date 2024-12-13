@@ -1,9 +1,8 @@
 package maulve.scythes.item.custom;
 
+import maulve.scythes.util.ModStatusEffects;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
@@ -36,8 +35,7 @@ public class AmethystScytheItem extends ScytheItem {
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (target.isAlive()) {
-            StatusEffectInstance effectWither = new StatusEffectInstance(StatusEffects.WITHER, 80, 1);
-            target.addStatusEffect(effectWither);
+            target.addStatusEffect(ModStatusEffects.getBleedingEffect());
         }
         World world = attacker.getWorld();
         if (!world.isClient) {
