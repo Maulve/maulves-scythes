@@ -4,11 +4,10 @@ import com.llamalad7.mixinextras.sugar.Local;
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.item.custom.AmethystScytheItem;
 import maulve.scythes.item.custom.ScytheItem;
+import maulve.scythes.util.ModStatusEffects;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -78,8 +77,7 @@ public abstract class PlayerEntityMixin {
     @Inject(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;damage(Lnet/minecraft/entity/damage/DamageSource;F)Z"))
     private void addBleeding(Entity target, CallbackInfo ci, @Local(ordinal = 0) @NotNull LivingEntity livingEntity) {
         if (holdingAmethystScythe()) {
-            StatusEffectInstance effectWither = new StatusEffectInstance(StatusEffects.WITHER, 80, 1);
-            livingEntity.addStatusEffect(effectWither);
+            livingEntity.addStatusEffect(ModStatusEffects.getBleedingEffect());
         }
     }
 

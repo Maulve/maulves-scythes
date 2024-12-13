@@ -1,5 +1,7 @@
 package maulve.scythes.enchantment;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
@@ -15,5 +17,10 @@ public class LifeDrainEnchantment extends ScytheEnchantment {
 
     @Override
     public int getMaxLevel() { return 3;}
+
+    @Override
+    public boolean canAccept(Enchantment other) {
+        return other != Enchantments.SWEEPING && other != Enchantments.LOOTING && super.canAccept(other);
+    }
 
 }
