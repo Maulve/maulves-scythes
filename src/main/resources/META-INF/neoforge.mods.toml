@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version}"
+license = "${license}"
+
+[[mods]]
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+logoFile = "assets/${id}/icon-big.png"
+description = '''
+${description}
+'''
+
+# Minecraft Dependency
+[[dependencies.${id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_range}"
+ordering = "NONE"
+side = "BOTH"
+
+# NeoForge Dependency
+[[dependencies.${id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neoforge_range}"
+ordering = "NONE"
+side = "BOTH"
