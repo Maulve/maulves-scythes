@@ -1,5 +1,14 @@
 <p align="center"><img src="image/title.png" alt="Maulve's Scythes"></p>
 
+> [!IMPORTANT]
+> Maulve's Scythes: Recut is a revival of the mod. It will be released for 1.20.4, 1.21.1, 1.21.4 and 1.21.11 (maybe on 26.x too), on Fabric and NeoForge. There is no ETA.
+
+> [!CAUTION]
+> **Recut is early in development, and not ready for players.**
+
+Below is the old README (to be updated).
+
+
 Maulve's Scythes is a Vanilla+ mod that adds scythes as new weapons. These slightly differ from swords, because they always sweep attack.
 You can also mine crops and other plant blocks in a 3x2 area!
 
