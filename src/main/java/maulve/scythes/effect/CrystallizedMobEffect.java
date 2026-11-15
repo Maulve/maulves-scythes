@@ -2,17 +2,27 @@ package maulve.scythes.effect;
 
 import maulve.scythes.platform.fabric.FabricModItems;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import org.jspecify.annotations.NonNull;
 
 // TODO: more effects, like heart color and screen effect
 public class CrystallizedMobEffect extends MobEffect {
 	public CrystallizedMobEffect() {
 		super(MobEffectCategory.HARMFUL, 0x000000);
+
+		this.addAttributeModifier(
+				Attributes.MOVEMENT_SPEED,
+				Identifier.withDefaultNamespace("effect.slowness"),
+				-0.25D,
+				AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+		);
 	}
 
 	@Override
