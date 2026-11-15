@@ -4,7 +4,7 @@ package maulve.scythes.platform.fabric.datagen;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 //? != 1.19.2 {
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 //?}
 
 public class FabricDataGeneratorEntrypoint implements DataGeneratorEntrypoint {
@@ -13,7 +13,7 @@ public class FabricDataGeneratorEntrypoint implements DataGeneratorEntrypoint {
 	public void onInitializeDataGenerator(FabricDataGenerator generator) {
 		final FabricDataGenerator.Pack pack = generator.createPack();
 		//? > 1.21.1 {
-		pack.addProvider((FabricPackOutput output) -> new ModRecipeProvider(output, generator.getRegistries()));
+		pack.addProvider((FabricDataOutput output) -> new ModRecipeProvider(output, generator.getRegistries()));
 		//?} <= 1.21.1 {
 		/*pack.addProvider(ModRecipeProvider::new);
 		*///?}

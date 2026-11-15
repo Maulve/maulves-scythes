@@ -19,10 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${main_package}.MaulvesScythes::onInitialize"
+      "${main_package}.platform.fabric.FabricEntrypoint"
     ],
     "client": [
-      "${main_package}.MaulvesScythes::onInitializeClient"
+      "${main_package}.platform.fabric.FabricClientEntrypoint"
     ]
   },
   "mixins": [

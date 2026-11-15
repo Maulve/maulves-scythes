@@ -1,0 +1,16 @@
+{
+  "itemgroup.maulves_scythes.scythes": "Maulve's Scythes",
+
+  "item.maulves_scythes.iron_scythe": "Залізна коса",
+  "item.maulves_scythes.diamond_scythe": "Діамантова коса",
+  "item.maulves_scythes.netherite_scythe": "Незеритова коса",
+  "item.maulves_scythes.amethyst_scythe": "Аметистова коса",
+  "item.maulves_scythes.reinforced_stick": "Посилена палиця",
+  "item.maulves_scythes.scythed_amethyst": "Аметистове лезо",
+
+  "item.maulves_scythes.amethyst_scythe.tooltip-bleeding": "§4Кровотеча",
+
+  "enchantment.maulves_scythes.life_drain": "поглинання життя",
+
+  "tag.item.maulves_scythes.scythes": "коси"
+}

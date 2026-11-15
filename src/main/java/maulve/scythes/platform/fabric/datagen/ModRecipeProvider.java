@@ -3,8 +3,9 @@ package maulve.scythes.platform.fabric.datagen;
 //? fabric {
 
 import maulve.scythes.MaulvesScythes;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.recipes.RecipeProvider;
 import org.jetbrains.annotations.NotNull;
 
 //? if <= 1.20.4 {
@@ -33,12 +34,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 	private final CompletableFuture<HolderLookup.Provider> registriesFuture;
 
-    public ModRecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
         this.registriesFuture = registriesFuture;
     }
 
-    //?}
+	@Override
+	protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
+		return null;
+	}
+
+	//?}
 
 	//? if <=1.21.1 {
 
@@ -53,15 +59,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 	}
 
 	*///? } else {
-	@Override
-    protected void generateRecipes(RecipeOutput recipeOutput) {
+	//@Override
+    //protected void generateRecipes(RecipeOutput recipeOutput) {
+		/*
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, Items.COOKED_CHICKEN)
                 .requires(Items.LAVA_BUCKET)
                 .requires(Items.CHICKEN)
                 .unlockedBy("has_lava_bucket", has(Items.LAVA_BUCKET))
                 .unlockedBy("has_chicken", has(Items.CHICKEN))
                 .save(recipeOutput, MaulvesScythes.MOD_ID + ":lava_chicken_recipe");
-    }
+
+		 */
+    //}
     //?}
 
 	@Override

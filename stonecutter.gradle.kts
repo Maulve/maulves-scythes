@@ -20,7 +20,7 @@ stonecutter parameters {
 
 	replacements {
 		string(current.parsed >= "1.21.11") {
-			replace("FabricDataOutput", "FabricPackOutput")
+			replace("FabricPackOutput", "FabricDataOutput")
 			replace("ResourceLocation", "Identifier")
 		}
 		string(current.parsed > "1.20.4") {

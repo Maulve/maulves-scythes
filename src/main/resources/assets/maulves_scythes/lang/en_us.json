@@ -1,0 +1,20 @@
+{
+  "itemgroup.maulves_scythes.scythes": "Maulve's Scythes",
+
+  "item.maulves_scythes.iron_scythe": "Iron Scythe",
+  "item.maulves_scythes.diamond_scythe": "Diamond Scythe",
+  "item.maulves_scythes.netherite_scythe": "Netherite Scythe",
+  "item.maulves_scythes.amethyst_scythe": "Amethyst Scythe",
+  "item.maulves_scythes.reinforced_stick": "Reinforced Stick",
+  "item.maulves_scythes.scythed_amethyst": "Scythed Amethyst",
+
+  "item.maulves_scythes.amethyst_scythe.tooltip-bleeding": "§4Bleeding",
+
+  "enchantment.maulves_scythes.life_drain": "Life Drain",
+  "enchantment.maulves_scythes.sweeping_arc": "Sweeping Arc",
+
+  "advancements.maulves_scythes.glimmering_reaper.title": "Glimmering reaper",
+  "advancements.maulves_scythes.glimmering_reaper.description": "Now we're talking",
+
+  "tag.item.maulves_scythes.scythes": "Scythes"
+}
