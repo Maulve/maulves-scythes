@@ -35,7 +35,7 @@ public class AmethystScytheItem extends ScytheItem {
 	@Override
 	public void hurtEnemy(@NonNull ItemStack stack, @NonNull LivingEntity target, @NonNull LivingEntity attacker) {
 		if (target.isAlive()) {
-			target.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
+			//target.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
 		}
 		Level level = attacker.level();
 		if (!level.isClientSide()) {

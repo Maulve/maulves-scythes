@@ -2,22 +2,51 @@ package maulve.scythes.platform.fabric;
 
 //? fabric {
 
-import maulve.scythes.event.ExampleEventHandler; // sample_content
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents; // sample_content
-import net.minecraft.server.level.ServerPlayer; // sample_content
+import maulve.scythes.enchantment.ModEnchantments;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
+import net.minecraft.core.Holder;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class FabricEventSubscriber {
 
 	public static void registerEvents() {
-		// this event just doesn't exist in 1.20.4
-		//? > 1.20.4 {
-		// sample_content
-		ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamage, damageTaken, blocked) -> { // sample_content
-			if (entity instanceof ServerPlayer && damageTaken > 0) { // sample_content
-				ExampleEventHandler.onPlayerHurt((ServerPlayer) entity); // sample_content
-			} // sample_content
-		}); // sample_content
-		//?}
+		registerLifeDrainEvent();
+		registerCrystalSwingEvent();
+	}
+
+	private static void registerCrystalSwingEvent() {
+		ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
+			if (source.getEntity() instanceof Player player) {
+				ItemStack weapon = player.getMainHandItem();
+
+				if (weapon.is(FabricModItems.AMETHYST_SCYTHE)) {
+					entity.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
+				}
+			}
+		});
+	}
+
+	private static void registerLifeDrainEvent() {
+		ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((level, entity, killedEntity, damageSource) -> {
+			if (entity instanceof Player player && killedEntity instanceof LivingEntity && level instanceof ServerLevel serverLevel) {
+
+				RegistryAccess registryAccess = serverLevel.getLevel().registryAccess();
+
+				Holder.Reference<Enchantment> lifeDrainEntry = ModEnchantments.getEntry(registryAccess, ModEnchantments.LIFE_DRAIN);
+
+				if (EnchantmentHelper.getEnchantmentLevel(lifeDrainEntry, player) > 0) {
+					player.heal(EnchantmentHelper.getEnchantmentLevel(lifeDrainEntry, player));
+				}
+			}
+		});
 	}
 }
 //?}

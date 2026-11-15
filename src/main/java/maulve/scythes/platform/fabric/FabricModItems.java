@@ -35,6 +35,7 @@ public class FabricModItems {
 
 
 	public static final ResourceKey<DamageType> CRYSTALLIZE_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, MaulvesScythes.id("crystallize"));
+	public static final ResourceKey<DamageType> CRYSTAL_SWING = ResourceKey.create(Registries.DAMAGE_TYPE, MaulvesScythes.id("crystal_swing"));
 
 	private static Item registerItem(String itemName, Item item) {
 		return Registry.register(BuiltInRegistries.ITEM, MaulvesScythes.id(itemName), item);
