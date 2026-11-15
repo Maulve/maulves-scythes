@@ -12,6 +12,8 @@ public class FabricEntrypoint implements ModInitializer {
 		MaulvesScythes.onInitialize();
 		FabricEventSubscriber.registerEvents();
 		FabricModItems.initialize();
+		FabricModCreativeTab.initialize();
+		FabricModEffects.initialize();
 	}
 }
 //?}

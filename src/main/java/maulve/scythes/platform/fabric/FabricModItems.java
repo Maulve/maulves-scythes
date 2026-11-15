@@ -8,12 +8,18 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ToolMaterial;
 
 public class FabricModItems {
 	private static final int ATTACK_DAMAGE = 4;
 	private static final float ATTACK_SPEED = -2.8F;
+
+	public static final Item REINFORCED_STICK = registerItem("reinforced_stick", new Item(new Item.Properties()
+			.setId(itemResourceKey("reinforced_stick"))));
+	public static final Item SCYTHED_AMETHYST = registerItem("scythed_amethyst", new Item(new Item.Properties()
+			.setId(itemResourceKey("scythed_amethyst"))));
 
 	public static final Item IRON_SCYTHE = registerScythe("iron_scythe",
 			ToolMaterial.IRON, ATTACK_DAMAGE, ATTACK_SPEED - 0.1F);
@@ -26,6 +32,9 @@ public class FabricModItems {
 
 	public static final Item AMETHYST_SCYTHE = registerAmethystScythe("amethyst_scythe",
 			ModToolMaterials.AMETHYST_MATERIAL, ATTACK_DAMAGE, ATTACK_SPEED);
+
+
+	public static final ResourceKey<DamageType> CRYSTALLIZE_DAMAGE = ResourceKey.create(Registries.DAMAGE_TYPE, MaulvesScythes.id("crystallize"));
 
 	private static Item registerItem(String itemName, Item item) {
 		return Registry.register(BuiltInRegistries.ITEM, MaulvesScythes.id(itemName), item);

@@ -23,6 +23,9 @@
     ],
     "client": [
       "${main_package}.platform.fabric.FabricClientEntrypoint"
+    ],
+    "fabric-datagen": [
+      "${main_package}.platform.fabric.datagen.FabricDataGeneratorEntrypoint"
     ]
   },
   "mixins": [

@@ -31,6 +31,12 @@ loom {
 	}
 }
 
+fabricApi {
+	configureDataGeneration {
+		client = true
+	}
+}
+
 java {
 	withSourcesJar()
 }

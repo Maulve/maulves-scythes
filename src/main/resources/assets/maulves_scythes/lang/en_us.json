@@ -8,13 +8,15 @@
   "item.maulves_scythes.reinforced_stick": "Reinforced Stick",
   "item.maulves_scythes.scythed_amethyst": "Scythed Amethyst",
 
-  "item.maulves_scythes.amethyst_scythe.tooltip-bleeding": "§4Bleeding",
+  "item.maulves_scythes.amethyst_scythe.tooltip-bleeding": " §4Bleeding",
+
+  "effect.maulves_scythes.crystallized": "Crystallized",
 
   "enchantment.maulves_scythes.life_drain": "Life Drain",
   "enchantment.maulves_scythes.sweeping_arc": "Sweeping Arc",
 
-  "advancements.maulves_scythes.glimmering_reaper.title": "Glimmering reaper",
-  "advancements.maulves_scythes.glimmering_reaper.description": "Now we're talking",
+  "advancements.maulves_scythes.amaranthine_death.title": "Amaranthine Death",
+  "advancements.maulves_scythes.amaranthine_death.description": "Craft the Amethyst Scythe",
 
   "tag.item.maulves_scythes.scythes": "Scythes"
 }

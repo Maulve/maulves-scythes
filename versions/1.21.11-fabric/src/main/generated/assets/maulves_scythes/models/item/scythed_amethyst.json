@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "maulves_scythes:item/scythed_amethyst"
+  }
+}
