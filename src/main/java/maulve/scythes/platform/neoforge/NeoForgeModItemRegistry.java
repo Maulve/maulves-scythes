@@ -20,7 +20,11 @@ public class NeoForgeModItemRegistry {
 			DeferredItem<?> deferredItem = ITEMS.registerItem(
 					blueprint.getName(),
 					blueprint.getFactory(),
+					//? if >= 1.21.11 {
 					blueprint.getPropertyModifier()
+					//? } else {
+					/^blueprint.getPropertyModifier().apply(new Item.Properties())
+					^///? }
 			);
 
 			wireSupplier(blueprint, deferredItem);

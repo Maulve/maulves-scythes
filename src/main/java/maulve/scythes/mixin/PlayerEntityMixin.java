@@ -83,10 +83,19 @@ public abstract class PlayerEntityMixin {
 		return originalSource;
 	}
 
-	//? if >= 1.21.11 {
-	private static final String SWEEP_TARGET = "doSweepAttack*";
-	//? } else {
-	/*private static final String SWEEP_TARGET = "attack";
+	//? fabric {
+		//? if >= 1.21.11 {
+		private static final String SWEEP_TARGET = "doSweepAttack*";
+		//? } else {
+		/*private static final String SWEEP_TARGET = "attack";
+		*///? }
+	//? }
+	//? neoforge {
+		/*//? if >= 1.21.11 {
+		private static final String SWEEP_TARGET = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V";
+		 //? } else {
+		/^private static final String SWEEP_TARGET = "attack";
+	^///? }
 	*///? }
 
 	@Inject(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V", ordinal = 0))
@@ -103,10 +112,11 @@ public abstract class PlayerEntityMixin {
 	fabric and neoforge differ slightly in code for Player#doSweepAttack.
 	while fabric calls the AABB.inflate inline, neoforge uses it as a method arg (of doSweepAttack)
 	 */
-	//? fabric
+	//? if fabric|| (neoforge && <= 1.21.11) {
 	@ModifyExpressionValue(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;inflate(DDD)Lnet/minecraft/world/phys/AABB;"))
-	//? neoforge
-	//@ModifyVariable(method = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V", at = @At("HEAD"), argsOnly = true)
+	//? } else {
+	/*@ModifyVariable(method = SWEEP_TARGET, at = @At("HEAD"), argsOnly = true)
+	*///? }
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
 		if (maulves_scythes$hasEnchantment(ModEnchantments.SWEEPING_ARC)) {
 			return originalBox.inflate(10.0, 0.5, 10.0);

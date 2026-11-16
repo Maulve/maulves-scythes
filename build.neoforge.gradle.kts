@@ -15,6 +15,10 @@ group = prop("mod.group")
 version = "${prop("mod.version")}+$mc"
 base.archivesName.set("${prop("mod.id")}-neoforge")
 
+dependencies {
+	compileOnly("org.jspecify:jspecify:1.0.0")
+}
+
 neoForge {
 	version = prop("neoforge.version.$mc")
 
