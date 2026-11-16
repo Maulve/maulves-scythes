@@ -5,12 +5,10 @@ package maulve.scythes.item;
 import net.minecraft.world.item.ToolMaterial;
 *///? }
 
-import maulve.scythes.platform.fabric.FabricModEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -34,9 +32,6 @@ public class AmethystScytheItem extends ScytheItem {
 
 	@Override
 	public void hurtEnemy(@NonNull ItemStack stack, @NonNull LivingEntity target, @NonNull LivingEntity attacker) {
-		if (target.isAlive()) {
-			//target.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
-		}
 		Level level = attacker.level();
 		if (!level.isClientSide()) {
 			float pitch = getRandom(2, 4) + 0.7F;

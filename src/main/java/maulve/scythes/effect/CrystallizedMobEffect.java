@@ -1,6 +1,6 @@
 package maulve.scythes.effect;
 
-import maulve.scythes.platform.fabric.FabricModItems;
+import maulve.scythes.damage_type.ModDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
@@ -30,7 +30,7 @@ public class CrystallizedMobEffect extends MobEffect {
 		DamageSource crystallizeDamageSource = new DamageSource(
 				level.registryAccess()
 						.lookupOrThrow(Registries.DAMAGE_TYPE)
-						.get(FabricModItems.CRYSTALLIZE_DAMAGE.identifier()).get()
+						.get(ModDamageTypes.CRYSTALLIZE_DAMAGE.identifier()).get()
 		);
 		entity.hurtServer(level, crystallizeDamageSource, 1.0F);
 		return true;

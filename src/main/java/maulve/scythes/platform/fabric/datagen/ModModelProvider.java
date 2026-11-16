@@ -1,6 +1,8 @@
 package maulve.scythes.platform.fabric.datagen;
 
-import maulve.scythes.platform.fabric.FabricModItems;
+//? fabric {
+
+import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
@@ -20,7 +22,8 @@ public class ModModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateItemModels(@NonNull ItemModelGenerators itemModelGenerator) {
-    	itemModelGenerator.generateFlatItem(FabricModItems.SCYTHED_AMETHYST, ModelTemplates.FLAT_ITEM);
-		itemModelGenerator.generateFlatItem(FabricModItems.REINFORCED_STICK, ModelTemplates.FLAT_HANDHELD_ITEM);
+    	itemModelGenerator.generateFlatItem(ModItems.SCYTHED_AMETHYST.get(), ModelTemplates.FLAT_ITEM);
+		itemModelGenerator.generateFlatItem(ModItems.REINFORCED_STICK.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 	}
 }
+//? }

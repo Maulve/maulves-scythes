@@ -1,6 +1,9 @@
 package maulve.scythes.platform.fabric;
 
+//? fabric {
+
 import maulve.scythes.MaulvesScythes;
+import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,15 +23,15 @@ public class FabricModCreativeTab {
 			BuiltInRegistries.CREATIVE_MODE_TAB,
 			SCYTHES_TAB_KEY,
 			FabricItemGroup.builder()
-					.icon(() -> new ItemStack(FabricModItems.DIAMOND_SCYTHE))
+					.icon(() -> new ItemStack(ModItems.DIAMOND_SCYTHE.get()))
 					.title(Component.translatable("itemgroup.maulves_scythes.scythes"))
 					.displayItems((itemDisplayParameters, output) -> {
-						output.accept(FabricModItems.IRON_SCYTHE);
-						output.accept(FabricModItems.DIAMOND_SCYTHE);
-						output.accept(FabricModItems.NETHERITE_SCYTHE);
-						output.accept(FabricModItems.AMETHYST_SCYTHE);
-						output.accept(FabricModItems.REINFORCED_STICK);
-						output.accept(FabricModItems.SCYTHED_AMETHYST);
+						output.accept(ModItems.IRON_SCYTHE.get());
+						output.accept(ModItems.DIAMOND_SCYTHE.get());
+						output.accept(ModItems.NETHERITE_SCYTHE.get());
+						output.accept(ModItems.AMETHYST_SCYTHE.get());
+						output.accept(ModItems.REINFORCED_STICK.get());
+						output.accept(ModItems.SCYTHED_AMETHYST.get());
 					}).build()
 	);
 
@@ -36,3 +39,5 @@ public class FabricModCreativeTab {
 
 	}
 }
+
+//? }

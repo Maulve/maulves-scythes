@@ -46,6 +46,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.processResources {
 	val props = mapOf(
+		"main_package" to prop("mod.main_package"),
 		"id" to prop("mod.id"),
 		"name" to prop("mod.name"),
 		"version" to project.version.toString(),
@@ -55,12 +56,14 @@ tasks.processResources {
 		"minecraft_range" to prop("neoforge.mc.$mc"),
 		"neoforge_range" to prop("neoforge.range.$mc"),
 		"loader_version" to if (legacyMetadata) "[1,)" else "[4,)",
+		"java_version" to prop("java.$mc")
 		// modern neoforge toolchains don't require the split anymore
 		//"dependency_type" to if (legacyMetadata) "mandatory = true" else "type = \"required\"",
 	)
 	inputs.properties(props)
 
 	filesMatching("META-INF/neoforge.mods.toml") { expand(props) }
+	filesMatching( "*.mixins.json") { expand(props) }
 	exclude("fabric.mod.json")
 	if (legacyMetadata) rename("neoforge.mods.toml", "mods.toml")
 }

@@ -1,5 +1,7 @@
 package maulve.scythes.platform.fabric.datagen;
 
+//? fabric {
+
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
 import net.minecraft.core.HolderLookup;
@@ -23,3 +25,5 @@ public class ModRegistryDataProvider extends FabricDynamicRegistryProvider {
 		return "";
 	}
 }
+
+//? }

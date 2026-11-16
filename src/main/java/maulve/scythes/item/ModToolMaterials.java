@@ -5,7 +5,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 
 public class ModToolMaterials {
-	public static final ToolMaterial AMETHYST_MATERIAL = new ToolMaterial(
+	public static final ToolMaterial AMETHYST = new ToolMaterial(
 			BlockTags.INCORRECT_FOR_WOODEN_TOOL,
 			2521, // durability
 			9.0F, // mining speed

@@ -2,7 +2,7 @@ package maulve.scythes.platform.fabric.datagen;
 
 //? fabric {
 
-import maulve.scythes.platform.fabric.FabricModItems;
+import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -28,19 +28,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		return new RecipeProvider(registryLookup, output) {
 			@Override
 			public void buildRecipes() {
-				offerScythe(output, FabricModItems.IRON_SCYTHE, Items.IRON_INGOT, Items.STICK);
-				offerScythe(output, FabricModItems.DIAMOND_SCYTHE, Items.DIAMOND, Items.STICK);
+				offerScythe(output, ModItems.IRON_SCYTHE.get(), Items.IRON_INGOT, Items.STICK);
+				offerScythe(output, ModItems.DIAMOND_SCYTHE.get(), Items.DIAMOND, Items.STICK);
 				// TODO
-				offerScythe(output, FabricModItems.AMETHYST_SCYTHE, FabricModItems.SCYTHED_AMETHYST, FabricModItems.REINFORCED_STICK);
+				offerScythe(output, ModItems.AMETHYST_SCYTHE.get(), ModItems.SCYTHED_AMETHYST.get(), ModItems.REINFORCED_STICK.get());
 
 				SmithingTransformRecipeBuilder.smithing(
 						Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-						Ingredient.of(FabricModItems.DIAMOND_SCYTHE),
+						Ingredient.of(ModItems.DIAMOND_SCYTHE.get()),
 						Ingredient.of(Items.NETHERITE_INGOT),
 						RecipeCategory.COMBAT,
-						FabricModItems.NETHERITE_SCYTHE
+						ModItems.NETHERITE_SCYTHE.get()
 				).unlocks("has_netherite_ingot", this.has(Items.NETHERITE_INGOT))
-						.save(output, getItemName(FabricModItems.NETHERITE_SCYTHE) + "_smithing");
+						.save(output, getItemName(ModItems.NETHERITE_SCYTHE.get()) + "_smithing");
 			}
 
 			private void offerScythe(RecipeOutput output, Item scythe, Item bladeMaterial, Item stickMaterial) {

@@ -1,7 +1,9 @@
 package maulve.scythes.platform.fabric.datagen;
 
+//? fabric {
+
 import maulve.scythes.item.ModItemTags;
-import maulve.scythes.platform.fabric.FabricModItems;
+import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
@@ -18,13 +20,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 	@Override
 	protected void addTags(HolderLookup.@NonNull Provider wrapperLookup) {
     	valueLookupBuilder(ModItemTags.SCYTHES)
-				.add(FabricModItems.IRON_SCYTHE)
-				.add(FabricModItems.DIAMOND_SCYTHE)
-				.add(FabricModItems.NETHERITE_SCYTHE)
-				.add(FabricModItems.AMETHYST_SCYTHE);
+				.add(ModItems.IRON_SCYTHE.get())
+				.add(ModItems.DIAMOND_SCYTHE.get())
+				.add(ModItems.NETHERITE_SCYTHE.get())
+				.add(ModItems.AMETHYST_SCYTHE.get());
 
 		valueLookupBuilder(ModItemTags.AMETHYST_REPAIR)
-				.add(FabricModItems.SCYTHED_AMETHYST);
+				.add(ModItems.SCYTHED_AMETHYST.get());
 
 		valueLookupBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE)
 				.addTag(ModItemTags.SCYTHES);
@@ -33,3 +35,5 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 				.addTag(ModItemTags.SCYTHES);
 	}
 }
+
+//? }

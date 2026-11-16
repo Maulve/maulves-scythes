@@ -1,5 +1,7 @@
 package maulve.scythes.platform.fabric;
 
+//? fabric {
+
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.effect.CrystallizedMobEffect;
 import net.minecraft.core.Holder;
@@ -16,3 +18,5 @@ public class FabricModEffects {
 
 	public static void initialize() {}
 }
+
+//? }

@@ -3,6 +3,7 @@ package maulve.scythes.platform.fabric;
 //? fabric {
 
 import maulve.scythes.enchantment.ModEnchantments;
+import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.core.Holder;
@@ -27,7 +28,7 @@ public class FabricEventSubscriber {
 			if (source.getEntity() instanceof Player player) {
 				ItemStack weapon = player.getMainHandItem();
 
-				if (weapon.is(FabricModItems.AMETHYST_SCYTHE)) {
+				if (weapon.is(ModItems.AMETHYST_SCYTHE.get())) {
 					entity.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
 				}
 			}
