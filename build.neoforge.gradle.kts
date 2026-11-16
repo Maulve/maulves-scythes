@@ -36,6 +36,15 @@ neoForge {
 	}
 }
 
+sourceSets {
+	main {
+		resources {
+			srcDir(rootProject.file("src/main/generated/${stonecutter.current.version}"))
+			exclude(".cache/**")
+		}
+	}
+}
+
 java {
 	withSourcesJar()
 }

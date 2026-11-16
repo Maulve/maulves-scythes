@@ -3,16 +3,12 @@ package maulve.scythes.platform.fabric;
 //? fabric {
 
 import maulve.scythes.enchantment.ModEnchantments;
-import maulve.scythes.item.ModItems;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
@@ -20,19 +16,6 @@ public class FabricEventSubscriber {
 
 	public static void registerEvents() {
 		registerLifeDrainEvent();
-		registerCrystalSwingEvent();
-	}
-
-	private static void registerCrystalSwingEvent() {
-		ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
-			if (source.getEntity() instanceof Player player) {
-				ItemStack weapon = player.getMainHandItem();
-
-				if (weapon.is(ModItems.AMETHYST_SCYTHE.get())) {
-					entity.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
-				}
-			}
-		});
 	}
 
 	private static void registerLifeDrainEvent() {

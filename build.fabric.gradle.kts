@@ -34,6 +34,7 @@ loom {
 fabricApi {
 	configureDataGeneration {
 		client = true
+		outputDirectory.set(rootProject.file("src/main/generated/${stonecutter.current.version}"))
 	}
 }
 

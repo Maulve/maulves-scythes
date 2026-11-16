@@ -13,6 +13,7 @@ import maulve.scythes.platform.fabric.FabricModEffects;
 //import maulve.scythes.platform.neoforge.NeoForgeMobEffects;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -50,12 +51,12 @@ public abstract class PlayerEntityMixin {
 		return maulves_scythes$getHeldItemStack().getItem() instanceof AmethystScytheItem;
 	}
 
-	@Unique boolean maulves_scythes$hasSweepingArcEnchantment() {
+	@Unique boolean maulves_scythes$hasEnchantment(ResourceKey<Enchantment> key) {
 		Player player = (Player) (Object) this;
 
 		Holder<Enchantment> sweepingArcHolder = player.registryAccess()
 				.lookupOrThrow(Registries.ENCHANTMENT)
-				.getOrThrow(ModEnchantments.SWEEPING_ARC);
+				.getOrThrow(key);
 
 		return EnchantmentHelper.getEnchantmentLevel(sweepingArcHolder, player) > 0;
 	}
@@ -72,7 +73,6 @@ public abstract class PlayerEntityMixin {
 	private DamageSource modifyDamageSource(DamageSource originalSource) {
 		Player player = (Player) (Object) this;
 		if (maulves_scythes$holdingAmethystScythe()) {
-			MaulvesScythes.LOGGER.info("modifyDamageSource: holding Amethyst Scythe!");
 			return new DamageSource(
 					player.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
 							.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
@@ -93,9 +93,16 @@ public abstract class PlayerEntityMixin {
 		}
 	}
 
+	/*
+	fabric and neoforge differ slightly in code for Player#doSweepAttack.
+	while fabric calls the AABB.inflate inline, neoforge uses it as a method arg (of doSweepAttack)
+	 */
+	//? fabric
 	@ModifyExpressionValue(method = "doSweepAttack*", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;inflate(DDD)Lnet/minecraft/world/phys/AABB;"))
+	//? neoforge
+	//@ModifyVariable(method = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V", at = @At("HEAD"), argsOnly = true)
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
-		if (maulves_scythes$hasSweepingArcEnchantment()) {
+		if (maulves_scythes$hasEnchantment(ModEnchantments.SWEEPING_ARC)) {
 			return originalBox.inflate(10.0, 0.5, 10.0);
 		} else {
 			return originalBox;
