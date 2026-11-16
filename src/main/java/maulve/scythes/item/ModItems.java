@@ -30,29 +30,59 @@ public class ModItems {
 			properties -> new Item.Properties()
 	);
 
-	public static final ItemBlueprint<ScytheItem> IRON_SCYTHE = register(
+	public static final ItemBlueprint<ScytheItem> IRON_SCYTHE = registerScythe(
 			"iron_scythe",
-			ScytheItem::new,
-			properties -> new Item.Properties().sword(ToolMaterial.IRON, ATTACK_DAMAGE, ATTACK_SPEED - 0.1F)
+			ToolMaterial.IRON,
+			ATTACK_DAMAGE,
+			ATTACK_SPEED - 0.1F
 	);
 
-	public static final ItemBlueprint<ScytheItem> DIAMOND_SCYTHE = register(
+	public static final ItemBlueprint<ScytheItem> DIAMOND_SCYTHE = registerScythe(
 			"diamond_scythe",
-			ScytheItem::new,
-			properties -> new Item.Properties().sword(ToolMaterial.DIAMOND, ATTACK_DAMAGE, ATTACK_SPEED)
+			ToolMaterial.DIAMOND,
+			ATTACK_DAMAGE,
+			ATTACK_SPEED
 	);
 
-	public static final ItemBlueprint<ScytheItem> NETHERITE_SCYTHE = register(
+	public static final ItemBlueprint<ScytheItem> NETHERITE_SCYTHE = registerScythe(
 			"netherite_scythe",
-			ScytheItem::new,
-			properties -> new Item.Properties().sword(ToolMaterial.NETHERITE, ATTACK_DAMAGE, ATTACK_SPEED)
+			ToolMaterial.NETHERITE,
+			ATTACK_DAMAGE,
+			ATTACK_SPEED
 	);
 
-	public static final ItemBlueprint<AmethystScytheItem> AMETHYST_SCYTHE = register(
+	public static final ItemBlueprint<AmethystScytheItem> AMETHYST_SCYTHE = registerAmethystScythe(
 			"amethyst_scythe",
-			AmethystScytheItem::new,
-			properties -> new Item.Properties().sword(ModToolMaterials.AMETHYST, ATTACK_DAMAGE, ATTACK_SPEED)
+			ModToolMaterials.AMETHYST,
+			ATTACK_DAMAGE,
+			ATTACK_SPEED
 	);
+
+	private static ItemBlueprint<AmethystScytheItem> registerAmethystScythe(String name, ToolMaterial toolMaterial, float attackDamage, float attackSpeed) {
+		return register(
+				name,
+				//? if >= 1.21.11 {
+				AmethystScytheItem::new,
+				 props -> new Item.Properties().sword(toolMaterial, attackDamage, attackSpeed)
+				//? } else {
+				/*props -> new AmethystScytheItem(toolMaterial, attackDamage, attackSpeed, props),
+				props -> new Item.Properties()
+				*///? }
+		);
+	}
+
+	private static ItemBlueprint<ScytheItem> registerScythe(String name, ToolMaterial toolMaterial, float attackDamage, float attackSpeed) {
+		return register(
+				name,
+				//? if >= 1.21.11 {
+				ScytheItem::new,
+				 props -> new Item.Properties().sword(toolMaterial, attackDamage, attackSpeed)
+				//? } else {
+				/*props -> new ScytheItem(toolMaterial, attackDamage, attackSpeed, props),
+				props -> new Item.Properties()
+				*///? }
+		);
+	}
 
 	private static <I extends Item> ItemBlueprint<I> register(
 			String name,

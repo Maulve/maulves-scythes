@@ -19,7 +19,11 @@ public class FabricEventSubscriber {
 	}
 
 	private static void registerLifeDrainEvent() {
+		//? if >= 1.21.11 {
 		ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((level, entity, killedEntity, damageSource) -> {
+		//? } else {
+		/*ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((level, entity, killedEntity) -> {
+			*///? }
 			if (entity instanceof Player player && killedEntity instanceof LivingEntity && level instanceof ServerLevel serverLevel) {
 
 				RegistryAccess registryAccess = serverLevel.getLevel().registryAccess();

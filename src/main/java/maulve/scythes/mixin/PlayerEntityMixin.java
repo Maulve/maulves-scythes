@@ -83,7 +83,13 @@ public abstract class PlayerEntityMixin {
 		return originalSource;
 	}
 
-	@Inject(method = "doSweepAttack*", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V", ordinal = 0))
+	//? if >= 1.21.11 {
+	private static final String SWEEP_TARGET = "doSweepAttack*";
+	//? } else {
+	/*private static final String SWEEP_TARGET = "attack";
+	*///? }
+
+	@Inject(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V", ordinal = 0))
 	private void onHurt(CallbackInfo ci, @Local LivingEntity livingEntity) {
 		if (maulves_scythes$holdingAmethystScythe()) {
 			//? fabric
@@ -98,7 +104,7 @@ public abstract class PlayerEntityMixin {
 	while fabric calls the AABB.inflate inline, neoforge uses it as a method arg (of doSweepAttack)
 	 */
 	//? fabric
-	@ModifyExpressionValue(method = "doSweepAttack*", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;inflate(DDD)Lnet/minecraft/world/phys/AABB;"))
+	@ModifyExpressionValue(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;inflate(DDD)Lnet/minecraft/world/phys/AABB;"))
 	//? neoforge
 	//@ModifyVariable(method = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V", at = @At("HEAD"), argsOnly = true)
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {

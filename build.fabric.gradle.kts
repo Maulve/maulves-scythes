@@ -23,6 +23,8 @@ dependencies {
 	modImplementation("net.fabricmc:fabric-loader:${prop("fabric.loader")}")
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${prop("fabric.api.$mc")}")
 	modImplementation("com.terraformersmc:modmenu:${prop("fabric.modmenu.$mc")}")
+
+	compileOnly("org.jspecify:jspecify:1.0.0")
 }
 
 loom {

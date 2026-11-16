@@ -19,9 +19,13 @@ stonecutter parameters {
 	swaps["mod_name"] = "\"${node.project.property("mod.name")}\";"
 
 	replacements {
-		string(current.parsed >= "1.21.11") {
-			replace("FabricPackOutput", "FabricDataOutput")
-			replace("ResourceLocation", "Identifier")
+		string(current.parsed < "1.21.11") {
+			replace("Identifier", "ResourceLocation")
+			replace("net.minecraft.advancements.criterion.", "net.minecraft.advancements.critereon.")
+			replace("VegetationBlock", "BushBlock")
+			replace("valueLookupBuilder(", "getOrCreateTagBuilder(")
+			replace("ItemTags.MELEE_WEAPON_ENCHANTABLE", "ItemTags.SWORD_ENCHANTABLE")
+			replace(".identifier()", ".location()")
 		}
 		string(current.parsed > "1.20.4") {
 			replace("event.getAmount()", "event.getNewDamage()")

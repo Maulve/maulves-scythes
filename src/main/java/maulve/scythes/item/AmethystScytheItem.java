@@ -17,8 +17,8 @@ import org.jspecify.annotations.NonNull;
 
 public class AmethystScytheItem extends ScytheItem {
 	//? if < 1.21.11 {
-	/*public AmethystScytheItem(ToolMaterial toolMaterial, Item.Settings settings) {
-		super(toolMaterial, settings);
+	/*public AmethystScytheItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+		super(toolMaterial, attackDamage, attackSpeed, properties);
 	}
 	*///? } else {
 	public AmethystScytheItem(Properties properties) {
@@ -31,7 +31,11 @@ public class AmethystScytheItem extends ScytheItem {
 	}
 
 	@Override
+	//? if >= 1.21.11 {
 	public void hurtEnemy(@NonNull ItemStack stack, @NonNull LivingEntity target, @NonNull LivingEntity attacker) {
+	//? } else {
+	/*public boolean hurtEnemy(@NonNull ItemStack stack, @NonNull LivingEntity target, @NonNull LivingEntity attacker) {
+		*///? }
 		Level level = attacker.level();
 		if (!level.isClientSide()) {
 			float pitch = getRandom(2, 4) + 0.7F;
@@ -40,6 +44,8 @@ public class AmethystScytheItem extends ScytheItem {
 			//IMPROVEMENT: maybe cool particles?
 		}
 		stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
+		//? <= 1.21.4
+		//return true;
 	}
 
 	@Override

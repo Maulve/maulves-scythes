@@ -23,8 +23,8 @@ public class ScytheItem extends
 	    Item
 {
 	//? if < 1.21.11 {
-	/*public ScytheItem(ToolMaterial toolMaterial, Item.Settings settings) {
-		super(toolMaterial, settings);
+	/*public ScytheItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
+		super(toolMaterial, attackDamage, attackSpeed, properties);
 	}
 	*///? } else {
 	public ScytheItem(Properties properties) {
@@ -33,7 +33,11 @@ public class ScytheItem extends
 	//?}
 
 	@Override
+	//? if >= 1.21.11 {
 	public boolean canDestroyBlock(@NonNull ItemStack stack, BlockState state, @NonNull Level level, @NonNull BlockPos pos, @NonNull LivingEntity entity) {
+	//? } else {
+	/*public boolean canAttackBlock(BlockState state, Level level, BlockPos pos, Player player) {
+		*///? }
 		return allowedToMine(state.getBlock());
 	}
 
