@@ -1,16 +1,21 @@
 package maulve.scythes.item;
 
+//? >= 1.21.4 {
+
+import maulve.scythes.platform.fabric.datagen.ModItemTagProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ToolMaterial;
 
 public class ModToolMaterials {
 	public static final ToolMaterial AMETHYST = new ToolMaterial(
-			BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-			2521, // durability
-			9.0F, // mining speed
-			5.0F, // attack damage
-			26, // enchantability
-			ItemTags.DIAMOND_TOOL_MATERIALS // repair material (TODO: add scythed amethyst)
+			AmethystMaterialDefinition.INCORRECT,
+			AmethystMaterialDefinition.DURABILITY,
+			AmethystMaterialDefinition.MINING_SPEED,
+			AmethystMaterialDefinition.ATTACK_DAMAGE,
+			AmethystMaterialDefinition.ENCHANTABILITY,
+			ModItemTags.AMETHYST_REPAIR
 	);
 }
+
+//? }

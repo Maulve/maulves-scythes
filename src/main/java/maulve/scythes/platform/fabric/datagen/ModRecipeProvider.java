@@ -9,6 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -23,6 +24,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 		super(output, registriesFuture);
 	}
 
+	//? if >= 1.21.4 {
 	@Override
 	protected @NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider registryLookup, @NonNull RecipeOutput output) {
 		return new RecipeProvider(registryLookup, output) {
@@ -30,16 +32,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			public void buildRecipes() {
 				offerScythe(output, ModItems.IRON_SCYTHE.get(), Items.IRON_INGOT, Items.STICK);
 				offerScythe(output, ModItems.DIAMOND_SCYTHE.get(), Items.DIAMOND, Items.STICK);
-				// TODO
 				offerScythe(output, ModItems.AMETHYST_SCYTHE.get(), ModItems.SCYTHED_AMETHYST.get(), ModItems.REINFORCED_STICK.get());
 
 				SmithingTransformRecipeBuilder.smithing(
-						Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-						Ingredient.of(ModItems.DIAMOND_SCYTHE.get()),
-						Ingredient.of(Items.NETHERITE_INGOT),
-						RecipeCategory.COMBAT,
-						ModItems.NETHERITE_SCYTHE.get()
-				).unlocks("has_netherite_ingot", this.has(Items.NETHERITE_INGOT))
+								Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+								Ingredient.of(ModItems.DIAMOND_SCYTHE.get()),
+								Ingredient.of(Items.NETHERITE_INGOT),
+								RecipeCategory.COMBAT,
+								ModItems.NETHERITE_SCYTHE.get()
+						).unlocks("has_netherite_ingot", this.has(Items.NETHERITE_INGOT))
 						.save(output, getItemName(ModItems.NETHERITE_SCYTHE.get()) + "_smithing");
 			}
 
@@ -55,6 +56,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 			}
 		};
 	}
+	//? } else {
+	/*@Override
+	public void buildRecipes(@NonNull RecipeOutput output) {
+		offerScythe(output, ModItems.IRON_SCYTHE.get(), Items.IRON_INGOT, Items.STICK);
+		offerScythe(output, ModItems.DIAMOND_SCYTHE.get(), Items.DIAMOND, Items.STICK);
+		offerScythe(output, ModItems.AMETHYST_SCYTHE.get(), ModItems.SCYTHED_AMETHYST.get(), ModItems.REINFORCED_STICK.get());
+
+		SmithingTransformRecipeBuilder.smithing(
+						Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+						Ingredient.of(ModItems.DIAMOND_SCYTHE.get()),
+						Ingredient.of(Items.NETHERITE_INGOT),
+						RecipeCategory.COMBAT,
+						ModItems.NETHERITE_SCYTHE.get()
+				).unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
+				.save(output, getItemName(ModItems.NETHERITE_SCYTHE.get()) + "_smithing");
+	}
+
+	private void offerScythe(RecipeOutput output, Item scythe, Item bladeMaterial, Item stickMaterial) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, scythe)
+				.pattern(" ##")
+				.pattern("# I")
+				.pattern("  I")
+				.define('#', bladeMaterial)
+				.define('I', stickMaterial)
+				.unlockedBy(getHasName(bladeMaterial), has(bladeMaterial))
+				.save(output);
+	}
+
+	*///? }
+
 
 	@Override
 	public @NonNull String getName() {

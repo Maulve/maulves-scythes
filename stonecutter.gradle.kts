@@ -27,10 +27,9 @@ stonecutter parameters {
 			replace("ItemTags.MELEE_WEAPON_ENCHANTABLE", "ItemTags.SWORD_ENCHANTABLE")
 			replace(".identifier()", ".location()")
 		}
-		string(current.parsed > "1.20.4") {
-			replace("event.getAmount()", "event.getNewDamage()")
-			// lmao
-			replace("BootstapContext", "BootstrapContext")
+		string(current.parsed < "1.21.4") {
+			//replace("net.fabricmc.fabric.api.client.datagen.v1.provider", "net.fabricmc.fabric.api.datagen.v1.provider")
+			replace("net.minecraft.client.data.models", "net.minecraft.data.models")
 		}
 	}
 }

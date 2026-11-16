@@ -69,7 +69,19 @@ public abstract class PlayerEntityMixin {
 		return doSweepAttack;
 	}
 
-	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 0)
+	//BUG:
+	// scythes broken for 1.21.1
+	// - they don't sweep and mobs don't drop any loot upon being killed
+	// - also reinforced stick and scythed amethyst don't have a model
+	// - crystallized effect isn't applied for Amethyst Scythe
+
+	//? if >= 1.21.4 {
+	private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	//? } else {
+	/*private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	*///? }
+
+	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = HURT_TARGET), index = 0)
 	private DamageSource modifyDamageSource(DamageSource originalSource) {
 		Player player = (Player) (Object) this;
 		if (maulves_scythes$holdingAmethystScythe()) {

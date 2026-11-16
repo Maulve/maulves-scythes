@@ -1,10 +1,11 @@
 package maulve.scythes.item;
 
-import maulve.scythes.MaulvesScythes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+//? if >= 1.21.4 {
 import net.minecraft.world.item.ToolMaterial;
+//? } else {
+/*import net.minecraft.world.item.Tier;
+*///? }
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,33 +33,37 @@ public class ModItems {
 
 	public static final ItemBlueprint<ScytheItem> IRON_SCYTHE = registerScythe(
 			"iron_scythe",
-			ToolMaterial.IRON,
+			MaterialHelper.get(MaterialHelper.Key.IRON),
 			ATTACK_DAMAGE,
 			ATTACK_SPEED - 0.1F
 	);
 
 	public static final ItemBlueprint<ScytheItem> DIAMOND_SCYTHE = registerScythe(
 			"diamond_scythe",
-			ToolMaterial.DIAMOND,
+			MaterialHelper.get(MaterialHelper.Key.DIAMOND),
 			ATTACK_DAMAGE,
 			ATTACK_SPEED
 	);
 
 	public static final ItemBlueprint<ScytheItem> NETHERITE_SCYTHE = registerScythe(
 			"netherite_scythe",
-			ToolMaterial.NETHERITE,
+			MaterialHelper.get(MaterialHelper.Key.NETHERITE),
 			ATTACK_DAMAGE,
 			ATTACK_SPEED
 	);
 
 	public static final ItemBlueprint<AmethystScytheItem> AMETHYST_SCYTHE = registerAmethystScythe(
 			"amethyst_scythe",
-			ModToolMaterials.AMETHYST,
+			MaterialHelper.get(MaterialHelper.Key.AMETHYST),
 			ATTACK_DAMAGE,
 			ATTACK_SPEED
 	);
 
+	//? if >= 1.21.4 {
 	private static ItemBlueprint<AmethystScytheItem> registerAmethystScythe(String name, ToolMaterial toolMaterial, float attackDamage, float attackSpeed) {
+		//? } else {
+	/*private static ItemBlueprint<AmethystScytheItem> registerAmethystScythe(String name, Tier toolMaterial, float attackDamage, float attackSpeed) {
+		*///? }
 		return register(
 				name,
 				//? if >= 1.21.11 {
@@ -71,7 +76,11 @@ public class ModItems {
 		);
 	}
 
+	//? if >= 1.21.4 {
 	private static ItemBlueprint<ScytheItem> registerScythe(String name, ToolMaterial toolMaterial, float attackDamage, float attackSpeed) {
+		//? } else {
+	/*private static ItemBlueprint<ScytheItem> registerScythe(String name, Tier toolMaterial, float attackDamage, float attackSpeed) {
+		*///? }
 		return register(
 				name,
 				//? if >= 1.21.11 {

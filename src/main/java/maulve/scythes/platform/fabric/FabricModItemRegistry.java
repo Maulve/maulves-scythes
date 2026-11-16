@@ -19,7 +19,9 @@ public class FabricModItemRegistry {
 
 			Item.Properties properties = blueprint.getPropertyModifier().apply(new Item.Properties());
 
+			//? if >= 1.21.4 {
 			properties.setId(key);
+			//? }
 
 			Item item = blueprint.getFactory().apply(properties);
 

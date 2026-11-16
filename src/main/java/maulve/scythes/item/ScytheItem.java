@@ -22,7 +22,11 @@ public class ScytheItem extends
 	    //? >= 1.21.11
 	    Item
 {
-	//? if < 1.21.11 {
+	//? if < 1.21.4 {
+	/*public ScytheItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
+		super(tier, properties.attributes(SwordItem.createAttributes(tier, (int) attackDamage, attackSpeed)));
+	}
+	*///? } else if < 1.21.11 {
 	/*public ScytheItem(ToolMaterial toolMaterial, float attackDamage, float attackSpeed, Properties properties) {
 		super(toolMaterial, attackDamage, attackSpeed, properties);
 	}

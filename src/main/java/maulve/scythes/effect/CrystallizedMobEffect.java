@@ -26,13 +26,23 @@ public class CrystallizedMobEffect extends MobEffect {
 	}
 
 	@Override
+	//? if >= 1.21.4 {
 	public boolean applyEffectTick(@NonNull ServerLevel level, LivingEntity entity, int amplifier) {
+		//? } else {
+	/*public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+		*///? }
+		//? if >= 1.21.4 {
 		DamageSource crystallizeDamageSource = new DamageSource(
-				level.registryAccess()
+				entity.registryAccess()
 						.lookupOrThrow(Registries.DAMAGE_TYPE)
 						.get(ModDamageTypes.CRYSTALLIZE_DAMAGE.identifier()).get()
 		);
+
 		entity.hurtServer(level, crystallizeDamageSource, 1.0F);
+		//? } else {
+		/*DamageSource crystallizeDamageSource = entity.level().damageSources().source(ModDamageTypes.CRYSTALLIZE_DAMAGE);
+		entity.hurt(crystallizeDamageSource, 1.0F);
+		*///? }
 		return true;
 	}
 

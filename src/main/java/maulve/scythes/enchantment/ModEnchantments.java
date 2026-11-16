@@ -56,8 +56,12 @@ public class ModEnchantments {
 	}
 
 	public static Holder.Reference<Enchantment> getEntry(RegistryAccess registryAccess, ResourceKey<Enchantment> key) {
+		//? if >= 1.21.4 {
 		Registry<Enchantment> registry = registryAccess.lookupOrThrow(Registries.ENCHANTMENT);
 		return registry.getOrThrow(key);
+		//? } else {
+		/*return registryAccess.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(key);
+		*///? }
 	}
 
 	private static ResourceKey<Enchantment> of(final String name) {
