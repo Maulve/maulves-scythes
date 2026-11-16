@@ -116,7 +116,7 @@ public class ScytheItem extends
 		for (BlockPos pos : gridPositions) {
 			Block block = level.getBlockState(pos).getBlock();
 			if (allowedToSweepMine(block)) {
-				level.destroyBlock(pos, !miner.isCreative(), miner, 0);
+				level.destroyBlock(pos, !miner.isCreative(), miner);
 			}
 		}
 	}
