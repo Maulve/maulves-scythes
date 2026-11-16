@@ -16,9 +16,7 @@ public class NeoForgeMobEffects {
 	public static final Holder<MobEffect> CRYSTALLIZED_EFFECT = MOB_EFFECTS.register("crystallized", CrystallizedMobEffect::new);
 
 	public static void initialize(IEventBus modEventBus) {
-
     	MOB_EFFECTS.register(modEventBus);
-
 	}
 }
 

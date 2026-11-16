@@ -12,6 +12,7 @@ public class NeoforgeEntrypoint {
 		MaulvesScythes.onInitialize();
 		NeoForgeModItemRegistry.initialize(modEventBus);
 		NeoForgeMobEffects.initialize(modEventBus);
+		NeoForgeModCreativeTab.initialize(modEventBus);
 	}
 }
 *///?}
