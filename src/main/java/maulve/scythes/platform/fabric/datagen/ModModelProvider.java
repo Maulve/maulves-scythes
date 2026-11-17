@@ -3,7 +3,11 @@ package maulve.scythes.platform.fabric.datagen;
 //? fabric {
 
 import maulve.scythes.item.ModItems;
+//? if >= 1.21.4 {
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
+//? } else {
+/*import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+*///? }
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;

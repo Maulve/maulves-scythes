@@ -1,0 +1,25 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.maulves_scythes.life_drain"
+  },
+  "exclusive_set": [
+    "minecraft:looting",
+    "minecraft:sweeping_edge"
+  ],
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 20
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 10
+  },
+  "primary_items": "#maulves_scythes:scythes",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#maulves_scythes:scythes",
+  "weight": 2
+}
