@@ -1,8 +1,11 @@
 package maulve.scythes.enchantment;
 
+import maulve.scythes.util.ScythesEnchantmentHelper;
+//? >= 1.21.1 {
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.item.ModItemTags;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
@@ -10,61 +13,50 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 
+import java.util.List;
+//? }
+
 public class ModEnchantments {
-	public static final ResourceKey<Enchantment> LIFE_DRAIN = of("life_drain");
-	public static final ResourceKey<Enchantment> SWEEPING_ARC = of("sweeping_arc");
+	//? if < 1.21.1 {
+	/*public static final ModEnchantmentRef LIFE_DRAIN = ScythesEnchantmentHelper.register(ScythesEnchantmentHelper.LIFE_DRAIN);
+	public static final ModEnchantmentRef SWEEPING_ARC = ScythesEnchantmentHelper.register(ScythesEnchantmentHelper.SWEEPING_ARC);
 
-	public static void bootstrap(BootstrapContext context) {
-		var enchantments = context.lookup(Registries.ENCHANTMENT);
-		var items = context.lookup(Registries.ITEM);
+	public static void initialize() {}
+	*///? } else {
+	public static final ModEnchantmentRef LIFE_DRAIN = new ModEnchantmentRef(ScythesEnchantmentHelper.LIFE_DRAIN.key());
+	public static final ModEnchantmentRef SWEEPING_ARC = new ModEnchantmentRef(ScythesEnchantmentHelper.SWEEPING_ARC.key());
 
-		final HolderSet<Enchantment> EXCLUSIVE_SET_LIFE_DRAIN = HolderSet.direct(
-				enchantments.getOrThrow(Enchantments.LOOTING),
-				enchantments.getOrThrow(Enchantments.SWEEPING_EDGE)
-		);
-		final HolderSet<Enchantment> EXCLUSIVE_SET_SWEEPING_ARC = HolderSet.direct(
-				enchantments.getOrThrow(Enchantments.SWEEPING_EDGE),
-				enchantments.getOrThrow(Enchantments.FIRE_ASPECT)
-		);
+	public static void bootstrap(BootstrapContext<Enchantment> context) {
+		HolderGetter<Enchantment> enchantments = context.lookup(Registries.ENCHANTMENT);
+		HolderGetter<Item> items = context.lookup(Registries.ITEM);
 
-		register(context, LIFE_DRAIN, Enchantment.enchantment(Enchantment.definition(
-				items.getOrThrow(ModItemTags.SCYTHES),
-				items.getOrThrow(ModItemTags.SCYTHES),
-				2,
-				1,
-				Enchantment.dynamicCost(10, 10),
-				Enchantment.dynamicCost(50, 20),
-				4,
-				EquipmentSlotGroup.MAINHAND)).exclusiveWith(EXCLUSIVE_SET_LIFE_DRAIN));
-
-		register(context, SWEEPING_ARC, Enchantment.enchantment(Enchantment.definition(
-				items.getOrThrow(ModItemTags.SCYTHES),
-				items.getOrThrow(ModItemTags.SCYTHES),
-				2,
-				1,
-				Enchantment.dynamicCost(10, 10),
-				Enchantment.dynamicCost(50, 20),
-				4,
-				EquipmentSlotGroup.MAINHAND)).exclusiveWith(EXCLUSIVE_SET_SWEEPING_ARC));
+		register(context, enchantments, items, ScythesEnchantmentHelper.LIFE_DRAIN);
+		register(context, enchantments, items, ScythesEnchantmentHelper.SWEEPING_ARC);
 	}
 
-	private static void register(BootstrapContext context, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
+	public static void register(BootstrapContext context, HolderGetter<Enchantment> enchantments, HolderGetter<Item> items, ScythesEnchantmentHelper.Definition definition) {
+		List<Holder<Enchantment>> exclusiveList = definition.exclusiveIds().stream()
+				.map(id -> (Holder<Enchantment>) enchantments.getOrThrow(ResourceKey.create(Registries.ENCHANTMENT, id)))
+				.toList();
+
+		HolderSet<Enchantment> exclusives = HolderSet.direct(exclusiveList);
+
+		Enchantment.Builder builder = Enchantment.enchantment(Enchantment.definition(
+				items.getOrThrow(definition.supportedItems()),
+				definition.weight(),
+				definition.maxLevel(),
+				definition.minCost().toMinecraftCost(),
+				definition.maxCost().toMinecraftCost(),
+				definition.anvilCost(),
+				EquipmentSlotGroup.MAINHAND)).exclusiveWith(exclusives);
+
+		ResourceKey<Enchantment> key = key(definition.id);
+
 		context.register(key, builder.build(key.identifier()));
 	}
-
-	public static Holder.Reference<Enchantment> getEntry(RegistryAccess registryAccess, ResourceKey<Enchantment> key) {
-		//? if >= 1.21.4 {
-		Registry<Enchantment> registry = registryAccess.lookupOrThrow(Registries.ENCHANTMENT);
-		return registry.getOrThrow(key);
-		//? } else {
-		/*return registryAccess.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(key);
-		*///? }
-	}
-
-	private static ResourceKey<Enchantment> of(final String name) {
-		return ResourceKey.create(Registries.ENCHANTMENT, MaulvesScythes.id(name));
-	}
+	//? }
 }

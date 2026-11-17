@@ -4,7 +4,8 @@ package maulve.scythes.util;
 import maulve.scythes.item.ModToolMaterials;
 import net.minecraft.world.item.ToolMaterial;
 //? } else {
-/*import net.minecraft.world.item.Tier;
+/*import maulve.scythes.item.ModTiers;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 *///? }
 

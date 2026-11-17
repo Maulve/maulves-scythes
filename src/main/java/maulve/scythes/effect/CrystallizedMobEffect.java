@@ -1,5 +1,6 @@
 package maulve.scythes.effect;
 
+import maulve.scythes.MaulvesScythes;
 import maulve.scythes.damage_type.ModDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -18,11 +19,14 @@ public class CrystallizedMobEffect extends MobEffect {
 	public static final Component TOOLTIP = Component.translatable("tooltip.maulves_scythes.crystallize");
 
 	public CrystallizedMobEffect() {
-		super(MobEffectCategory.HARMFUL, 0x000000);
+		super(MobEffectCategory.HARMFUL, 0x000001);
 
 		this.addAttributeModifier(
 				Attributes.MOVEMENT_SPEED,
-				Identifier.withDefaultNamespace("effect.slowness"),
+				//? >= 1.21.1
+				MaulvesScythes.id("minecraft", "effect.slowness"),
+				//? <= 1.20.4
+				//"7107DE5E-7CE8-4030-940E-514C1F160890",
 				-0.25D,
 				AttributeModifier.Operation.ADD_MULTIPLIED_BASE
 		);
@@ -31,8 +35,10 @@ public class CrystallizedMobEffect extends MobEffect {
 	@Override
 	//? if >= 1.21.4 {
 	public boolean applyEffectTick(@NonNull ServerLevel level, LivingEntity entity, int amplifier) {
-		//? } else {
+		//? } else if 1.21.1 {
 	/*public boolean applyEffectTick(LivingEntity entity, int amplifier) {
+		*///? } else {
+	/*public void applyEffectTick(LivingEntity entity, int amplifier) {
 		*///? }
 		//? if >= 1.21.4 {
 		DamageSource crystallizeDamageSource = new DamageSource(
@@ -46,6 +52,7 @@ public class CrystallizedMobEffect extends MobEffect {
 		/*DamageSource crystallizeDamageSource = entity.level().damageSources().source(ModDamageTypes.CRYSTALLIZE_DAMAGE);
 		entity.hurt(crystallizeDamageSource, 1.0F);
 		*///? }
+		//? >= 1.21.1
 		return true;
 	}
 

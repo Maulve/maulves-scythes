@@ -28,11 +28,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 		valueLookupBuilder(ModItemTags.AMETHYST_REPAIR)
 				.add(ModItems.SCYTHED_AMETHYST.get());
 
+		//? >= 1.21.1 {
 		valueLookupBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE)
 				.addTag(ModItemTags.SCYTHES);
 
 		valueLookupBuilder(ItemTags.MELEE_WEAPON_ENCHANTABLE)
 				.addTag(ModItemTags.SCYTHES);
+		//? }
 	}
 }
 

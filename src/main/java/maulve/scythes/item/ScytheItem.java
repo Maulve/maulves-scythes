@@ -22,7 +22,11 @@ public class ScytheItem extends
 	    //? >= 1.21.11
 	    Item
 {
-	//? if < 1.21.4 {
+	//? if <= 1.20.4 {
+	/*public ScytheItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
+		super(tier, (int) attackDamage, attackSpeed, properties);
+	}
+	*///? } else if < 1.21.4 {
 	/*public ScytheItem(Tier tier, float attackDamage, float attackSpeed, Properties properties) {
 		super(tier, properties.attributes(SwordItem.createAttributes(tier, (int) attackDamage, attackSpeed)));
 	}
@@ -69,7 +73,10 @@ public class ScytheItem extends
 		}
 
 		if (state.getDestroySpeed(level, pos) != 0.0F) {
+			//? >= 1.21.1
 			stack.hurtAndBreak(2, miningEntity, EquipmentSlot.MAINHAND);
+			//? <= 1.20.4
+			//stack.hurtAndBreak(2, miningEntity, (entity) -> entity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
 		}
 		return true;
 	}

@@ -14,7 +14,11 @@ public class FabricClientEntrypoint implements ClientModInitializer {
 	public void onInitializeClient() {
 		MaulvesScythes.onInitializeClient();
 
+		//? if >= 1.21.1 {
 		ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, list) -> {
+			//? } else {
+		/*ItemTooltipCallback.EVENT.register((stack, tooltipContext, list) -> {
+			*///? }
 			if (stack.is(ModItems.AMETHYST_SCYTHE.get())) {
 				list.add(CrystallizedMobEffect.TOOLTIP);
 			}

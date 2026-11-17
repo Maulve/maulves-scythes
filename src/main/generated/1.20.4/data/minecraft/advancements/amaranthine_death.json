@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:end/find_end_city",
+  "criteria": {
+    "has_amethyst_scythe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "maulves_scythes:amethyst_scythe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.maulves_scythes.amaranthine_death.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "item": "maulves_scythes:amethyst_scythe",
+      "nbt": "{Damage:0}"
+    },
+    "title": {
+      "translate": "advancements.maulves_scythes.amaranthine_death.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_amethyst_scythe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

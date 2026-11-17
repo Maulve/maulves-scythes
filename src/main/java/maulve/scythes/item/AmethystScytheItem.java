@@ -48,11 +48,15 @@ public class AmethystScytheItem extends ScytheItem {
 		Level level = attacker.level();
 		if (!level.isClientSide()) {
 			float pitch = getRandom(2, 4) + 0.7F;
-			level.playSound(null, target.getBlockPosBelowThatAffectsMyMovement(), SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.PLAYERS, 1F, pitch);
+			//level.playSound(null, target.getBlockPosBelowThatAffectsMyMovement(), SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.PLAYERS, 1F, pitch);
 
 			//IMPROVEMENT: maybe cool particles?
 		}
+		//? >= 1.21.1
 		stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
+		//? <= 1.20.4
+		//stack.hurtAndBreak(2, attacker, (entity) -> entity.broadcastBreakEvent(EquipmentSlot.MAINHAND));
+
 		//? <= 1.21.4
 		//return true;
 	}

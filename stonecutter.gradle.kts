@@ -31,5 +31,10 @@ stonecutter parameters {
 			//replace("net.fabricmc.fabric.api.client.datagen.v1.provider", "net.fabricmc.fabric.api.datagen.v1.provider")
 			replace("net.minecraft.client.data.models", "net.minecraft.data.models")
 		}
+		string(current.parsed < "1.21.1") {
+			replace("BootstrapContext", "BootstapContext")
+			replace("FabricModEffects.CRYSTALLIZED_EFFECT", "FabricModEffects.CRYSTALLIZED_EFFECT.value()")
+			replace("AttributeModifier.Operation.ADD_MULTIPLIED_BASE", "AttributeModifier.Operation.MULTIPLY_BASE")
+		}
 	}
 }

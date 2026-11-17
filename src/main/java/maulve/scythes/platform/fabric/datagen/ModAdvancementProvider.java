@@ -18,12 +18,29 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class ModAdvancementProvider extends FabricAdvancementProvider {
+	//? if >= 1.21.1 {
 	protected ModAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
 		super(output, registryLookup);
 	}
+	//? } else {
+	/*protected ModAdvancementProvider(FabricDataOutput output) {
+		super(output);
+	}
+	*///? }
 
+	//? if < 1.21.1 {
+	/*@Override
+	public void generateAdvancement(Consumer<AdvancementHolder> consumer) {
+		customGenerateAdvancement(consumer);
+	}
+	*///? } else {
 	@Override
 	public void generateAdvancement(HolderLookup.@NonNull Provider registryLookup, @NonNull Consumer<AdvancementHolder> consumer) {
+		customGenerateAdvancement(consumer);
+	}
+	//? }
+
+	private static void customGenerateAdvancement(@NonNull Consumer<AdvancementHolder> consumer) {
 		Advancement.Builder.advancement()
 				.parent(AdvancementSubProvider.createPlaceholder("minecraft:end/find_end_city"))
 				.display(

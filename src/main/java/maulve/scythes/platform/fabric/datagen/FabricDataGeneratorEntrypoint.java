@@ -18,12 +18,15 @@ public class FabricDataGeneratorEntrypoint implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
+		//? >= 1.21.1
 		pack.addProvider(ModRegistryDataProvider::new);
 	}
 
+	//? >= 1.21.1 {
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
 		registryBuilder.add(Registries.ENCHANTMENT, ModEnchantments::bootstrap);
 	}
+	//? }
 }
 //?}

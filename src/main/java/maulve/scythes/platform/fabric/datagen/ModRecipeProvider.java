@@ -20,9 +20,15 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
 
+	//? if >= 1.21.1 {
 	public ModRecipeProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 		super(output, registriesFuture);
 	}
+	//? } else {
+	/*public ModRecipeProvider(FabricDataOutput output) {
+		super(output);
+	}
+	*///? }
 
 	//? if >= 1.21.4 {
 	@Override

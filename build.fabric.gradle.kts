@@ -31,6 +31,8 @@ loom {
 	runConfigs.configureEach {
 		runDir = "../../run" // one shared run directory for every node
 	}
+
+	//accessWidenerPath = file("src/main/resources/${prop("mod.id")}.accesswidener")
 }
 
 fabricApi {

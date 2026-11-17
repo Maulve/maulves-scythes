@@ -5,6 +5,7 @@ import maulve.scythes.damage_type.ModDamageTypes;
 import maulve.scythes.enchantment.ModEnchantments;
 import maulve.scythes.item.ModItems;
 import maulve.scythes.util.MixinHelper;
+import maulve.scythes.util.ScythesEnchantmentHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -39,11 +40,8 @@ public abstract class PlayerMixin {
 	private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
 	//? } else {
 	/*@Unique
-	/^private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
-	^/*///? }
-
-
-	// NOTE: NOT YET PORTED TO EARLIER VERSIONS, ONLY FOR 1.21.11
+	private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	*///? }
 
 	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = HURT_TARGET), index = 0)
 	private DamageSource modifyDamageSource(DamageSource originalSource) {
@@ -51,7 +49,8 @@ public abstract class PlayerMixin {
 		if (causingEntity instanceof LivingEntity livingEntity) {
 			if (livingEntity.getMainHandItem().is(ModItems.AMETHYST_SCYTHE.get())) {
 				return new DamageSource(
-						livingEntity.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
+						// .level() required for 1.20.4
+						livingEntity.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
 								.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
 						livingEntity
 				);
@@ -102,7 +101,8 @@ public abstract class PlayerMixin {
 		if (causingEntity instanceof LivingEntity livingEntity) {
 			if (livingEntity.getMainHandItem().is(ModItems.AMETHYST_SCYTHE.get())) {
 				return new DamageSource(
-						livingEntity.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
+						// .level() required for 1.20.4
+						livingEntity.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
 								.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
 						livingEntity
 				);
@@ -123,7 +123,8 @@ public abstract class PlayerMixin {
 	/*@ModifyVariable(method = SWEEP_TARGET, at = @At("HEAD"), argsOnly = true)
 	*///? }
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
-		if (MixinHelper.maulves_scythes$hasEnchantment(getSelf(), ModEnchantments.SWEEPING_ARC)) {
+		Player player = (Player) (Object) this;
+		if (ScythesEnchantmentHelper.has(ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
 			return originalBox.inflate(10.0, 0.5, 10.0);
 		} else {
 			return originalBox;

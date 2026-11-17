@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "maulves_scythes:iron_scythe",
+    "maulves_scythes:diamond_scythe",
+    "maulves_scythes:netherite_scythe",
+    "maulves_scythes:amethyst_scythe"
+  ]
+}
