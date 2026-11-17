@@ -115,9 +115,9 @@ public abstract class PlayerMixin {
 	fabric and neoforge differ slightly in code for Player#doSweepAttack.
 	while fabric calls the AABB.inflate inline, neoforge uses it as a method arg (of doSweepAttack)
 	 */
-	//? if fabric|| (neoforge && < 1.21.11 && > 1.21.1) {
+	//? if fabric|| (neoforge && (< 1.21.11 && > 1.21.1 || 1.20.4)) {
 	@ModifyExpressionValue(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/AABB;inflate(DDD)Lnet/minecraft/world/phys/AABB;"))
-	//? } else if <= 1.21.1 {
+	//? } else if 1.21.1 {
 	/*@ModifyExpressionValue(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getSweepHitBox(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/phys/AABB;"))
 	*///? } else {
 	/*@ModifyVariable(method = SWEEP_TARGET, at = @At("HEAD"), argsOnly = true)
