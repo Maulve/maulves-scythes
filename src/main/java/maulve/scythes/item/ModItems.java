@@ -1,5 +1,6 @@
 package maulve.scythes.item;
 
+import maulve.scythes.util.MaterialHelper;
 import net.minecraft.world.item.Item;
 //? if >= 1.21.4 {
 import net.minecraft.world.item.ToolMaterial;

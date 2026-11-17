@@ -1,6 +1,7 @@
-package maulve.scythes.item;
+package maulve.scythes.util;
 
 //? if >= 1.21.4 {
+import maulve.scythes.item.ModToolMaterials;
 import net.minecraft.world.item.ToolMaterial;
 //? } else {
 /*import net.minecraft.world.item.Tier;
