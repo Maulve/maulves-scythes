@@ -18,6 +18,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 
 import java.util.List;
+
+import static maulve.scythes.util.ScythesEnchantmentHelper.key;
 //? }
 
 public class ModEnchantments {
@@ -54,7 +56,7 @@ public class ModEnchantments {
 				definition.anvilCost(),
 				EquipmentSlotGroup.MAINHAND)).exclusiveWith(exclusives);
 
-		ResourceKey<Enchantment> key = key(definition.id);
+		ResourceKey<Enchantment> key = key(definition.id());
 
 		context.register(key, builder.build(key.identifier()));
 	}

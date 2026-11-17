@@ -32,7 +32,10 @@ public class FabricEventSubscriber {
 			/*if (entity instanceof Player player && killedEntity instanceof LivingEntity && level != null) {
 				*///? }
 				ItemStack weaponStack = player.getMainHandItem();
-				int enchantmentLevel = ScythesEnchantmentHelper.getLevel(ModEnchantments.LIFE_DRAIN, weaponStack);
+				//? >= 1.21.1
+				int enchantmentLevel = ScythesEnchantmentHelper.getLevel(player.level().registryAccess(), ModEnchantments.LIFE_DRAIN, weaponStack);
+				//? <= 1.20.4
+				//int enchantmentLevel = ScythesEnchantmentHelper.getLevel(ModEnchantments.LIFE_DRAIN, weaponStack);
 				if (enchantmentLevel > 0) {
 					player.heal(enchantmentLevel);
 				}

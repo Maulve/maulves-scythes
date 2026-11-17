@@ -124,7 +124,10 @@ public abstract class PlayerMixin {
 	*///? }
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
 		Player player = (Player) (Object) this;
-		if (ScythesEnchantmentHelper.has(ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
+		//? >= 1.21.1
+		if (ScythesEnchantmentHelper.has(player.level().registryAccess(), ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
+			//? <= 1.20.4
+		//if (ScythesEnchantmentHelper.has(ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
 			return originalBox.inflate(10.0, 0.5, 10.0);
 		} else {
 			return originalBox;

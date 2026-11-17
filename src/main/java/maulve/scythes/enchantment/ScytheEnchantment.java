@@ -1,6 +1,8 @@
 package maulve.scythes.enchantment;
 
-import maulve.scythes.util.ScythesEnchantmentHelper;
+//? <= 1.20.4 {
+
+/*import maulve.scythes.util.ScythesEnchantmentHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -52,3 +54,5 @@ public class ScytheEnchantment extends Enchantment {
 		return super.checkCompatibility(other);
 	}
 }
+
+*///? }

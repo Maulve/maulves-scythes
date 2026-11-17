@@ -2,11 +2,13 @@ package maulve.scythes.util;
 
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.enchantment.ModEnchantmentRef;
-import maulve.scythes.enchantment.ScytheEnchantment;
+//? <= 1.20.4
+//import maulve.scythes.enchantment.ScytheEnchantment;
 import maulve.scythes.item.ModItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -114,13 +116,25 @@ public class ScythesEnchantmentHelper {
 	}
 	//? }
 
-	public static int getLevel(ModEnchantmentRef ref, ItemStack stack) {
+	//? if >= 1.21.1 {
+	public static int getLevel(RegistryAccess registryAccess, ModEnchantmentRef ref, ItemStack stack) {
+		return EnchantmentHelper.getItemEnchantmentLevel(ref.get(registryAccess), stack);
+	}
+	//? } else {
+	/*public static int getLevel(ModEnchantmentRef ref, ItemStack stack) {
 		return EnchantmentHelper.getItemEnchantmentLevel(ref.get(), stack);
 	}
+	*///? }
 
-	public static boolean has(ModEnchantmentRef ref, ItemStack stack) {
+	//? if >= 1.21.1 {
+	public static boolean has(RegistryAccess registryAccess, ModEnchantmentRef ref, ItemStack stack) {
+		return getLevel(registryAccess, ref, stack) > 0;
+	}
+	//? } else {
+	/*public static boolean has(ModEnchantmentRef ref, ItemStack stack) {
 		return getLevel(ref, stack) > 0;
 	}
+	*///? }
 
 	public static ResourceKey<Enchantment> key(final String name) {
 		return ResourceKey.create(Registries.ENCHANTMENT, MaulvesScythes.id(name));
