@@ -35,10 +35,12 @@ public abstract class PlayerMixin {
 	}
 
 	//? if >= 1.21.4 {
+	@Unique
 	private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
 	//? } else {
-	/*private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
-	*///? }
+	/*@Unique
+	/^private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	^/*///? }
 
 
 	// NOTE: NOT YET PORTED TO EARLIER VERSIONS, ONLY FOR 1.21.11
@@ -59,28 +61,38 @@ public abstract class PlayerMixin {
 	}
 
 	//? if >= 1.21.11 {
+	@Unique
 	private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	@Unique
 	private static final int HURT_SERVER_INDEX = 1;
 	//? } else if >= 1.21.4 {
-	/*private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V";
+	/*@Unique
+	private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V";
+	@Unique
 	private static final int HURT_SERVER_INDEX = 0;
 	*///? } else {
-	/*private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	/*@Unique
+	private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	@Unique
 	private static final int HURT_SERVER_INDEX = 0;
 	*///? }
 
 	//? fabric {
 	//? if >= 1.21.11 {
+	@Unique
 	private static final String SWEEP_TARGET = "doSweepAttack*";
 	 //? } else {
-	/*private static final String SWEEP_TARGET = "attack";
+	/*@Unique
+	private static final String SWEEP_TARGET = "attack";
 	*///? }
 	//? }
 	//? neoforge {
 		/*//? if >= 1.21.11 {
+		@Unique
 		private static final String SWEEP_TARGET = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V";
 		 //? } else {
-		/^private static final String SWEEP_TARGET = "attack";
+		 /^@Unique
+		private static final String SWEEP_TARGET = "attack";
 	^///? }
 	*///? }
 
