@@ -8,7 +8,7 @@
   "item.maulves_scythes.reinforced_stick": "Verstärkter Stock",
   "item.maulves_scythes.scythed_amethyst": "Gekrümmter Amethyst",
 
-  "item.maulves_scythes.amethyst_scythe.tooltip-bleeding": " §5Kristallisieren",
+  "tooltip.maulves_scythes.crystallize": " §5Kristallisieren",
 
   "effect.maulves_scythes.crystallized": "Kristallisiert",
 

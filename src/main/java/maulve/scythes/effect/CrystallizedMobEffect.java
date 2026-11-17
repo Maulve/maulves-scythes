@@ -2,6 +2,7 @@ package maulve.scythes.effect;
 
 import maulve.scythes.damage_type.ModDamageTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,6 +15,8 @@ import org.jspecify.annotations.NonNull;
 
 // TODO: more effects, like heart color and screen effect
 public class CrystallizedMobEffect extends MobEffect {
+	public static final Component TOOLTIP = Component.translatable("tooltip.maulves_scythes.crystallize");
+
 	public CrystallizedMobEffect() {
 		super(MobEffectCategory.HARMFUL, 0x000000);
 
