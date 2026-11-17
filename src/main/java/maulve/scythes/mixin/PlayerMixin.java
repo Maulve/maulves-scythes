@@ -3,8 +3,6 @@ package maulve.scythes.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import maulve.scythes.damage_type.ModDamageTypes;
 import maulve.scythes.enchantment.ModEnchantments;
-//? fabric
-//? neoforge
 import maulve.scythes.item.ModItems;
 import maulve.scythes.util.MixinHelper;
 import net.minecraft.core.registries.Registries;
@@ -60,7 +58,33 @@ public abstract class PlayerMixin {
 		return originalSource;
 	}
 
-	@ModifyArg(method = "doSweepAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 1)
+	//? if >= 1.21.11 {
+	private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	private static final int HURT_SERVER_INDEX = 1;
+	//? } else if >= 1.21.4 {
+	/*private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)V";
+	private static final int HURT_SERVER_INDEX = 0;
+	*///? } else {
+	/*private static final String HURT_SERVER_TARGET = "Lnet/minecraft/world/entity/LivingEntity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
+	private static final int HURT_SERVER_INDEX = 0;
+	*///? }
+
+	//? fabric {
+	//? if >= 1.21.11 {
+	private static final String SWEEP_TARGET = "doSweepAttack*";
+	 //? } else {
+	/*private static final String SWEEP_TARGET = "attack";
+	*///? }
+	//? }
+	//? neoforge {
+		/*//? if >= 1.21.11 {
+		/^private static final String SWEEP_TARGET = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V";
+		 ^///? } else {
+		private static final String SWEEP_TARGET = "attack";
+	//? }
+	*///? }
+
+	@ModifyArg(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = HURT_SERVER_TARGET), index = HURT_SERVER_INDEX)
 	private DamageSource modifyDamageSourceInSweep(DamageSource originalSource) {
 		Entity causingEntity = originalSource.getEntity();
 		if (causingEntity instanceof LivingEntity livingEntity) {
@@ -75,20 +99,7 @@ public abstract class PlayerMixin {
 		return originalSource;
 	}
 
-	//? fabric {
-		//? if >= 1.21.11 {
-		private static final String SWEEP_TARGET = "doSweepAttack*";
-		//? } else {
-		/*private static final String SWEEP_TARGET = "attack";
-		*///? }
-	//? }
-	//? neoforge {
-		/*//? if >= 1.21.11 {
-		/^private static final String SWEEP_TARGET = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V";
-		 ^///? } else {
-		private static final String SWEEP_TARGET = "attack";
-	//? }
-	*///? }
+
 
 	/*
 	fabric and neoforge differ slightly in code for Player#doSweepAttack.
