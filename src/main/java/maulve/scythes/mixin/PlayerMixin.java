@@ -1,79 +1,40 @@
 package maulve.scythes.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import com.llamalad7.mixinextras.sugar.Local;
-import maulve.scythes.MaulvesScythes;
 import maulve.scythes.damage_type.ModDamageTypes;
 import maulve.scythes.enchantment.ModEnchantments;
-import maulve.scythes.item.AmethystScytheItem;
-import maulve.scythes.item.ScytheItem;
 //? fabric
-import maulve.scythes.platform.fabric.FabricModEffects;
 //? neoforge
-//import maulve.scythes.platform.neoforge.NeoForgeMobEffects;
-import net.minecraft.core.Holder;
+import maulve.scythes.item.ModItems;
+import maulve.scythes.util.MixinHelper;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.phys.AABB;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Debug(export = true)
 @Mixin(Player.class)
-public abstract class PlayerEntityMixin {
-
+public abstract class PlayerMixin {
 	@Unique
-	protected ItemStack maulves_scythes$getHeldItemStack() {
-		Player player = (Player) (Object) this;
-		assert player != null;
-		return player.getMainHandItem();
-	}
-
-	@Unique
-	private boolean maulves_scythes$holdingScythe() {
-		return maulves_scythes$getHeldItemStack().getItem() instanceof ScytheItem;
-	}
-
-	@Unique
-	private boolean maulves_scythes$holdingAmethystScythe() {
-		return maulves_scythes$getHeldItemStack().getItem() instanceof AmethystScytheItem;
-	}
-
-	@Unique boolean maulves_scythes$hasEnchantment(ResourceKey<Enchantment> key) {
-		Player player = (Player) (Object) this;
-
-		Holder<Enchantment> sweepingArcHolder = player.registryAccess()
-				.lookupOrThrow(Registries.ENCHANTMENT)
-				.getOrThrow(key);
-
-		return EnchantmentHelper.getEnchantmentLevel(sweepingArcHolder, player) > 0;
+	private Player getSelf() {
+		return (Player) (Object) this;
 	}
 
 	@ModifyVariable(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;getHealth()F"), ordinal = 3)
 	private boolean overrideDoSweepAttack(boolean doSweepAttack) {
-		if (maulves_scythes$holdingScythe()) {
+		if (MixinHelper.maulves_scythes$holdingScythe(getSelf())) {
 			return true;
 		}
 		return doSweepAttack;
 	}
-
-	//BUG:
-	// scythes broken for 1.21.1
-	// - they don't sweep and mobs don't drop any loot upon being killed
-	// - also reinforced stick and scythed amethyst don't have a model
-	// - crystallized effect isn't applied for Amethyst Scythe
 
 	//? if >= 1.21.4 {
 	private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurtOrSimulate(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
@@ -81,17 +42,36 @@ public abstract class PlayerEntityMixin {
 	/*private static final String HURT_TARGET = "Lnet/minecraft/world/entity/Entity;hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z";
 	*///? }
 
+
+	// NOTE: NOT YET PORTED TO EARLIER VERSIONS, ONLY FOR 1.21.11
+
 	@ModifyArg(method = "attack", at = @At(value = "INVOKE", target = HURT_TARGET), index = 0)
 	private DamageSource modifyDamageSource(DamageSource originalSource) {
-		Player player = (Player) (Object) this;
-		if (maulves_scythes$holdingAmethystScythe()) {
-			return new DamageSource(
-					player.level().registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
-							.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
-					player
-			);
+		Entity causingEntity = originalSource.getEntity();
+		if (causingEntity instanceof LivingEntity livingEntity) {
+			if (livingEntity.getMainHandItem().is(ModItems.AMETHYST_SCYTHE.get())) {
+				return new DamageSource(
+						livingEntity.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
+								.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
+						livingEntity
+				);
+			}
 		}
+		return originalSource;
+	}
 
+	@ModifyArg(method = "doSweepAttack", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;hurtServer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;F)Z"), index = 1)
+	private DamageSource modifyDamageSourceInSweep(DamageSource originalSource) {
+		Entity causingEntity = originalSource.getEntity();
+		if (causingEntity instanceof LivingEntity livingEntity) {
+			if (livingEntity.getMainHandItem().is(ModItems.AMETHYST_SCYTHE.get())) {
+				return new DamageSource(
+						livingEntity.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE)
+								.getOrThrow(ModDamageTypes.CRYSTAL_SWING),
+						livingEntity
+				);
+			}
+		}
 		return originalSource;
 	}
 
@@ -110,16 +90,6 @@ public abstract class PlayerEntityMixin {
 	//? }
 	*///? }
 
-	@Inject(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;knockback(DDD)V", ordinal = 0))
-	private void onHurt(CallbackInfo ci, @Local LivingEntity livingEntity) {
-		if (maulves_scythes$holdingAmethystScythe()) {
-			//? fabric
-			livingEntity.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
-			//? neoforge
-			//livingEntity.addEffect(new MobEffectInstance(NeoForgeMobEffects.CRYSTALLIZED_EFFECT, 200, 0));
-		}
-	}
-
 	/*
 	fabric and neoforge differ slightly in code for Player#doSweepAttack.
 	while fabric calls the AABB.inflate inline, neoforge uses it as a method arg (of doSweepAttack)
@@ -130,7 +100,7 @@ public abstract class PlayerEntityMixin {
 	/*@ModifyVariable(method = SWEEP_TARGET, at = @At("HEAD"), argsOnly = true)
 	*///? }
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
-		if (maulves_scythes$hasEnchantment(ModEnchantments.SWEEPING_ARC)) {
+		if (MixinHelper.maulves_scythes$hasEnchantment(getSelf(), ModEnchantments.SWEEPING_ARC)) {
 			return originalBox.inflate(10.0, 0.5, 10.0);
 		} else {
 			return originalBox;
