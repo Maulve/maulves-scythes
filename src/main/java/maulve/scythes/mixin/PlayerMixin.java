@@ -87,12 +87,12 @@ public abstract class PlayerMixin {
 	//? }
 	//? neoforge {
 		/*//? if >= 1.21.11 {
-		@Unique
+		/^@Unique
 		private static final String SWEEP_TARGET = "doSweepAttack(Lnet/minecraft/world/entity/Entity;FLnet/minecraft/world/damagesource/DamageSource;FLnet/minecraft/world/phys/AABB;)V";
-		 //? } else {
-		 /^@Unique
+		 ^///? } else {
+		 @Unique
 		private static final String SWEEP_TARGET = "attack";
-	^///? }
+	//? }
 	*///? }
 
 	@ModifyArg(method = SWEEP_TARGET, at = @At(value = "INVOKE", target = HURT_SERVER_TARGET), index = HURT_SERVER_INDEX)
@@ -124,10 +124,11 @@ public abstract class PlayerMixin {
 	*///? }
 	private AABB expandSweepBoundingBoxForSweepingArc(AABB originalBox) {
 		Player player = (Player) (Object) this;
-		//? >= 1.21.1
+		//? if (fabric && >= 1.21.1) || (neoforge && <= 1.20.4) {
 		if (ScythesEnchantmentHelper.has(player.level().registryAccess(), ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
-			//? <= 1.20.4
-		//if (ScythesEnchantmentHelper.has(ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
+			//? } else {
+		/*if (ScythesEnchantmentHelper.has(ModEnchantments.SWEEPING_ARC, MixinHelper.maulves_scythes$getHeldItemStack(player))) {
+			*///? }
 			return originalBox.inflate(10.0, 0.5, 10.0);
 		} else {
 			return originalBox;

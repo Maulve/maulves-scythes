@@ -28,7 +28,9 @@ public class LivingEntityMixin {
 			LivingEntity target = (LivingEntity) (Object) this;
 			//? fabric
 			target.addEffect(new MobEffectInstance(FabricModEffects.CRYSTALLIZED_EFFECT, 200, 0));
-			//? neoforge
+			//? neoforge && >= 1.21.1
+			//target.addEffect(new MobEffectInstance(NeoForgeMobEffects.CRYSTALLIZED_EFFECT, 200, 0));
+			//? neoforge && <= 1.20.4
 			//target.addEffect(new MobEffectInstance(NeoForgeMobEffects.CRYSTALLIZED_EFFECT.value(), 200, 0));
 		}
 	}

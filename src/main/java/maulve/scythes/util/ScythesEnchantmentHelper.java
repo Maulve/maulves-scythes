@@ -21,6 +21,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+//? neoforge {
+/*import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+*///? }
 
 import java.util.List;
 
@@ -79,7 +83,7 @@ public class ScythesEnchantmentHelper {
 			)
 	);
 
-	//? if < 1.21.1 {
+	//? fabric && <= 1.20.4 {
 	/*public static ModEnchantmentRef register(Definition definition) {
 		Enchantment instance = Registry.register(
 				BuiltInRegistries.ENCHANTMENT,
@@ -88,7 +92,15 @@ public class ScythesEnchantmentHelper {
 		);
 		return new ModEnchantmentRef(key(definition.id()), instance);
 	}
-	*///? } else {
+	*///? } neoforge && <= 1.20.4 {
+	/*public static ModEnchantmentRef register(final DeferredRegister<Enchantment> ENCHANTMENTS, Definition definition) {
+		ENCHANTMENTS.register(definition.id(),
+				() -> new ScytheEnchantment(definition));
+
+		return new ModEnchantmentRef(definition.key());
+	}
+
+	*///? } fabric && >= 1.21.1 {
 	public static ModEnchantmentRef register(BootstrapContext context, Definition definition) {
 		var enchantments = context.lookup(Registries.ENCHANTMENT);
 		var items = context.lookup(Registries.ITEM);
@@ -116,9 +128,12 @@ public class ScythesEnchantmentHelper {
 	}
 	//? }
 
-	//? if >= 1.21.1 {
+	//? if (fabric && >= 1.21.1) || (neoforge && <= 1.20.4){
 	public static int getLevel(RegistryAccess registryAccess, ModEnchantmentRef ref, ItemStack stack) {
+		//? fabric
 		return EnchantmentHelper.getItemEnchantmentLevel(ref.get(registryAccess), stack);
+		//? neoforge
+		//return EnchantmentHelper.getItemEnchantmentLevel(ref.get(registryAccess).value(), stack);
 	}
 	//? } else {
 	/*public static int getLevel(ModEnchantmentRef ref, ItemStack stack) {
@@ -126,7 +141,7 @@ public class ScythesEnchantmentHelper {
 	}
 	*///? }
 
-	//? if >= 1.21.1 {
+	//? if (fabric && >= 1.21.1) || (neoforge && <= 1.20.4) {
 	public static boolean has(RegistryAccess registryAccess, ModEnchantmentRef ref, ItemStack stack) {
 		return getLevel(registryAccess, ref, stack) > 0;
 	}

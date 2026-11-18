@@ -1,6 +1,13 @@
 package maulve.scythes.enchantment;
 
+import maulve.scythes.MaulvesScythes;
 import maulve.scythes.util.ScythesEnchantmentHelper;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.enchantment.Enchantment;
+//? neoforge {
+/*import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+*///? }
 //? >= 1.21.1 {
 import maulve.scythes.MaulvesScythes;
 import maulve.scythes.item.ModItemTags;
@@ -23,12 +30,21 @@ import static maulve.scythes.util.ScythesEnchantmentHelper.key;
 //? }
 
 public class ModEnchantments {
-	//? if < 1.21.1 {
+	//? neoforge && <= 1.20.4 {
+	/*private static final DeferredRegister<Enchantment> ENCHANTMENTS =
+			DeferredRegister.create(Registries.ENCHANTMENT, MaulvesScythes.MOD_ID);
+	public static final ModEnchantmentRef LIFE_DRAIN = ScythesEnchantmentHelper.register(ENCHANTMENTS, ScythesEnchantmentHelper.LIFE_DRAIN);
+	public static final ModEnchantmentRef SWEEPING_ARC = ScythesEnchantmentHelper.register(ENCHANTMENTS, ScythesEnchantmentHelper.SWEEPING_ARC);
+
+	public static void initialize(IEventBus modEventBus) {
+		ENCHANTMENTS.register(modEventBus);
+	}
+	*///? } fabric && <= 1.20.4 {
 	/*public static final ModEnchantmentRef LIFE_DRAIN = ScythesEnchantmentHelper.register(ScythesEnchantmentHelper.LIFE_DRAIN);
 	public static final ModEnchantmentRef SWEEPING_ARC = ScythesEnchantmentHelper.register(ScythesEnchantmentHelper.SWEEPING_ARC);
 
 	public static void initialize() {}
-	*///? } else {
+	*///? } fabric && >= 1.21.1 {
 	public static final ModEnchantmentRef LIFE_DRAIN = new ModEnchantmentRef(ScythesEnchantmentHelper.LIFE_DRAIN.key());
 	public static final ModEnchantmentRef SWEEPING_ARC = new ModEnchantmentRef(ScythesEnchantmentHelper.SWEEPING_ARC.key());
 
